@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>javascript常用方法收集 - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="获取当前元素样式：12345678910111213function getStyle(oElm, strCssRule)&amp;#123;  var strValue = &quot;&quot;;  if(document.defaultView &amp;amp;&amp;amp; document.defaultView.getComputedStyle)&amp;#123;      strValue = document.defaul">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="javascript常用方法收集">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/08/javascriptFn/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="获取当前元素样式：12345678910111213function getStyle(oElm, strCssRule)&amp;#123;  var strValue = &quot;&quot;;  if(document.defaultView &amp;amp;&amp;amp; document.defaultView.getComputedStyle)&amp;#123;      strValue = document.defaul">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript常用方法收集">
+<meta name="twitter:description" content="获取当前元素样式：12345678910111213function getStyle(oElm, strCssRule)&amp;#123;  var strValue = &quot;&quot;;  if(document.defaultView &amp;amp;&amp;amp; document.defaultView.getComputedStyle)&amp;#123;      strValue = document.defaul">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            javascript常用方法收集
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Tue Sep 08 2015 14:33:42 GMT+0800">
+	
+		    08/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>获取当前元素样式：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">function</span> getStyle(oElm, <span class="keyword">strCssRule)&#123;</span><br><span class="line"></span>  var <span class="keyword">strValue </span>= <span class="string">""</span><span class="comment">;</span></span><br><span class="line">  <span class="preprocessor">if</span>(document.defaultView &amp;&amp; document.defaultView.getComputedStyle)&#123;</span><br><span class="line">      <span class="keyword">strValue </span>= document.defaultView.getComputedStyle(oElm, <span class="string">""</span>).getPropertyValue(<span class="keyword">strCssRule);</span><br><span class="line"></span>  &#125;</span><br><span class="line">  <span class="preprocessor">else</span> <span class="preprocessor">if</span>(oElm.currentStyle)&#123;</span><br><span class="line">      <span class="keyword">strCssRule </span>= <span class="keyword">strCssRule.replace(/\-(\w)/g, </span><span class="preprocessor">function</span> (<span class="keyword">strMatch, </span><span class="literal">p1</span>)&#123;</span><br><span class="line">          return <span class="literal">p1</span>.toUpperCase()<span class="comment">;</span></span><br><span class="line">      &#125;)<span class="comment">;</span></span><br><span class="line">      <span class="keyword">strValue </span>= oElm.currentStyle[<span class="keyword">strCssRule];</span><br><span class="line"></span>  &#125;</span><br><span class="line">  return <span class="keyword">strValue;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>格式化数字，格式化金额：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">number_format</span>(<span class="params"><span class="built_in">number</span>, decimals, dec_point, thousands_sep</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span><br><span class="line">  * 参数说明：</span><br><span class="line">  * number：要格式化的数字</span><br><span class="line">  * decimals：保留几位小数</span><br><span class="line">  * dec_point：小数点符号</span><br><span class="line">  * thousands_sep：千分位符号</span><br><span class="line">  * */</span></span><br><span class="line">  <span class="built_in">number</span> = (<span class="built_in">number</span> + <span class="string">''</span>).replace(<span class="regexp">/[^0-9+-Ee.]/g</span>, <span class="string">''</span>);</span><br><span class="line">  <span class="keyword">var</span> n = !<span class="built_in">isFinite</span>(+<span class="built_in">number</span>) ? <span class="number">0</span> : +<span class="built_in">number</span>,</span><br><span class="line">      prec = !<span class="built_in">isFinite</span>(+decimals) ? <span class="number">0</span> : <span class="built_in">Math</span>.abs(decimals),</span><br><span class="line">      sep = (<span class="keyword">typeof</span> thousands_sep === <span class="string">'undefined'</span>) ? <span class="string">','</span> : thousands_sep,</span><br><span class="line">      dec = (<span class="keyword">typeof</span> dec_point === <span class="string">'undefined'</span>) ? <span class="string">'.'</span> : dec_point,</span><br><span class="line">      s = <span class="string">''</span>,</span><br><span class="line">      toFixedFix = <span class="function"><span class="keyword">function</span> (<span class="params">n, prec</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> k = <span class="built_in">Math</span>.pow(<span class="number">10</span>, prec);</span><br><span class="line">          <span class="keyword">return</span> <span class="string">''</span> + <span class="built_in">Math</span>.ceil(n * k) / k;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">  s = (prec ? toFixedFix(n, prec) : <span class="string">''</span> + <span class="built_in">Math</span>.round(n)).split(<span class="string">'.'</span>);</span><br><span class="line">  <span class="keyword">var</span> re = <span class="regexp">/(-?\d+)(\d&#123;3&#125;)/</span>;</span><br><span class="line">  <span class="keyword">while</span> (re.test(s[<span class="number">0</span>])) &#123;</span><br><span class="line">      s[<span class="number">0</span>] = s[<span class="number">0</span>].replace(re, <span class="string">"$1"</span> + sep + <span class="string">"$2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((s[<span class="number">1</span>] || <span class="string">''</span>).length &lt; prec) &#123;</span><br><span class="line">      s[<span class="number">1</span>] = s[<span class="number">1</span>] || <span class="string">''</span>;</span><br><span class="line">      s[<span class="number">1</span>] += <span class="keyword">new</span> <span class="built_in">Array</span>(prec - s[<span class="number">1</span>].length + <span class="number">1</span>).join(<span class="string">'0'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s.join(dec);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用说明：</span></span><br><span class="line"><span class="keyword">var</span> num=number_format(<span class="number">1234567.089</span>, <span class="number">2</span>, <span class="string">"."</span>, <span class="string">","</span>);<span class="comment">//1,234,567.09</span></span><br></pre></td></tr></table></figure></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/common/">common</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/javascriptDebugger/"  data-tooltip="javascriptDebugger">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/Html5HeadTag/" data-tooltip="Html5HeadTag">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/javascriptDebugger/"  data-tooltip="javascriptDebugger">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/Html5HeadTag/" data-tooltip="Html5HeadTag">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/javascriptFn/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

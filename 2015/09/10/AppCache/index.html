@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>AppCache - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="AppCache：就是对app内存缓存的方案，具体表现为当请求某个文件时不是从网络获取该文件，而是从本地获取。优点：
+
+-离线浏览 - 用户可在应用离线时使用它们-速度 - 已缓存资源加载得更快-减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源
+
+AppCache实现：添加文件index.appcache,内容为：123456CACHE MANIFEST// 要缓存的文件index.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="AppCache">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/10/AppCache/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="AppCache：就是对app内存缓存的方案，具体表现为当请求某个文件时不是从网络获取该文件，而是从本地获取。优点：
+
+-离线浏览 - 用户可在应用离线时使用它们-速度 - 已缓存资源加载得更快-减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源
+
+AppCache实现：添加文件index.appcache,内容为：123456CACHE MANIFEST// 要缓存的文件index.">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AppCache">
+<meta name="twitter:description" content="AppCache：就是对app内存缓存的方案，具体表现为当请求某个文件时不是从网络获取该文件，而是从本地获取。优点：
+
+-离线浏览 - 用户可在应用离线时使用它们-速度 - 已缓存资源加载得更快-减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源
+
+AppCache实现：添加文件index.appcache,内容为：123456CACHE MANIFEST// 要缓存的文件index.">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            AppCache
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Sep 10 2015 14:01:04 GMT+0800">
+	
+		    10/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>AppCache：就是对app内存缓存的方案，具体表现为当请求某个文件时不是从网络获取该文件，而是从本地获取。<br>优点：</p>
+<blockquote>
+<p>-离线浏览 - 用户可在应用离线时使用它们<br>-速度 - 已缓存资源加载得更快<br>-减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源</p>
+</blockquote>
+<p>AppCache实现：<br>添加文件index.appcache,内容为：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"><span class="comment">// 要缓存的文件</span></span><br><span class="line">index<span class="class">.html</span></span><br><span class="line">index<span class="class">.css</span></span><br><span class="line">index<span class="class">.js</span></span><br><span class="line">logo.jpg</span><br></pre></td></tr></table></figure><br>修改index.html<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">html</span> manifest=<span class="string">"index.appcache"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>第一次请求会把所有文件都拉下来， 同时会请求index.appcache文件。<br>这时修改index.html文件再次请求并不会更新index.html文件， 说明index.html已经缓存，并不会从server端获取。</p>
+<p>更新文件的条件：</p>
+<blockquote>
+<p>-用户清空浏览器缓存<br>-manifest 文件被修改<br>-由程序来更新应用缓存</p>
+<p><strong>注：</strong> 更新index.appcache会导致所有文件都重新请求， 但当次并不生效而是要等到下一次请求才能生效， 当次显示还是采用之前缓存过得文件。</p>
+</blockquote>
+<p>CACHE MANIFEST：下面列出的是首次下载进行缓存<br>NETWORK：下面列出的是不会被缓存的<br>FALLBACK：下面列出的是无法访问时的回退页面</p>
+<blockquote>
+<p><strong>注意：</strong> 主页一定会被缓存起来的，因为AppCache主要是用来做离线应用的，如果主页不缓存就无法离线插件了，因此把index.html添加到NETWORK中是不起效果的。</p>
+</blockquote>
+<p>AppCache的缺点及改进点：<br>1、对manifest文件更新，会重新请求所有文件，实际上可能只更新了很少量文件。（ 虽然重新请求资源会返回304， 但每个文件还会发起请求）；<br>针对此点可以只更新需要更新的文件， 比如可以建立一个文件版本或者MD5映射，对相同版本或者MD5不再请求<br>2、manifest文件每次都会请求，我们可以按照一定时间更新一次，或者启动时更新一次，以减少manifest文件更新次数<br>3、对hybrid方案还可以在打开app之前预缓存，提前下载文件或者更新manifest文件。</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/HTML5/">HTML5</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/10/throttle/"  data-tooltip="throttle与debounce">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/10/commonUtil/" data-tooltip="常用函数">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/10/throttle/"  data-tooltip="throttle与debounce">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/10/commonUtil/" data-tooltip="常用函数">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/10/AppCache/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

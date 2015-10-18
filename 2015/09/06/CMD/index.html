@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>AMD与CMD及其他模块化工具 - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="实现浏览器的模块化加载，解析模块依赖关系，自动加载相关模块。Node支持CommonJsAMD是CommonJs的分支：AMD采用异步加载模块，模块加载不影响后面语句运行。所有依赖某些模块的语句均放置在回调函数中。
+AMD 是提前执行，CMD 是延迟执行。CMD 推崇依赖就近，AMD 推崇依赖前置
+styleCombine：将 HTML 页面上的多个 js/css 请求自动地合并成一个请求，发送给">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="AMD与CMD及其他模块化工具">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/06/CMD/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="实现浏览器的模块化加载，解析模块依赖关系，自动加载相关模块。Node支持CommonJsAMD是CommonJs的分支：AMD采用异步加载模块，模块加载不影响后面语句运行。所有依赖某些模块的语句均放置在回调函数中。
+AMD 是提前执行，CMD 是延迟执行。CMD 推崇依赖就近，AMD 推崇依赖前置
+styleCombine：将 HTML 页面上的多个 js/css 请求自动地合并成一个请求，发送给">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AMD与CMD及其他模块化工具">
+<meta name="twitter:description" content="实现浏览器的模块化加载，解析模块依赖关系，自动加载相关模块。Node支持CommonJsAMD是CommonJs的分支：AMD采用异步加载模块，模块加载不影响后面语句运行。所有依赖某些模块的语句均放置在回调函数中。
+AMD 是提前执行，CMD 是延迟执行。CMD 推崇依赖就近，AMD 推崇依赖前置
+styleCombine：将 HTML 页面上的多个 js/css 请求自动地合并成一个请求，发送给">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            AMD与CMD及其他模块化工具
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Sun Sep 06 2015 06:40:45 GMT+0800">
+	
+		    06/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>实现浏览器的模块化加载，解析模块依赖关系，自动加载相关模块。<br>Node支持CommonJs<br>AMD是CommonJs的分支：AMD采用异步加载模块，模块加载不影响后面语句运行。所有依赖某些模块的语句均放置在回调函数中。</p>
+<p>AMD 是提前执行，CMD 是延迟执行。<br>CMD 推崇依赖就近，AMD 推崇依赖前置</p>
+<h2 id="styleCombine：">styleCombine：</h2><p>将 HTML 页面上的多个 js/css 请求自动地合并成一个请求，发送给combo服务器。                                                                      </p>
+<p>对于入口的 AMD/CMD 模块，能够自动解析出模块的深层依赖关系，并将所依赖文件及页面上的其它 js 文件合并为一个请求发送。         </p>
+<p>对 HTML 页面中每个 js/css 链接都会根据文件内容自动地添加版本号后缀，js/css 内容更新将触发版本号的实时更新，使得浏览器端缓存或 CDN 缓存能够强制失效。</p>
+<h2 id="Browserify：">Browserify：</h2><p>让浏览器支持CommonJs：</p>
+<blockquote>
+<p>浏览器不兼容CommonJS的根本原因，在于缺少四个Node.js环境的变量module exports require global，只要能够提供这四个变量，浏览器就能加载 CommonJS 模块。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">  exports: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">module, exports</span>) </span>&#123;</span><br><span class="line">  exports.multiply = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123; <span class="keyword">return</span> n * <span class="number">1000</span> &#125;;</span><br><span class="line">&#125;(<span class="built_in">module</span>, <span class="built_in">module</span>.exports))</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="built_in">module</span>.exports.multiply;</span><br><span class="line">f(<span class="number">5</span>) <span class="comment">// 5000</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个立即执行函数提供 module 和 exports 两个外部变量，模块就放在这个立即执行函数里面。模块的输出值放在 module.exports 之中，这样就实现了模块的加载</p>
+</blockquote>
+<h2 id="Browserify_的实现：">Browserify 的实现：</h2><p>例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="built_in">require</span>(<span class="string">"./foo"</span>);</span><br><span class="line">foo(<span class="string">"Hi"</span>);</span><br></pre></td></tr></table></figure><br>命令：browserify main.js &gt; compiled.js <em>将main.js转为浏览器可用的格式</em></p>
+<p>安装一下browser-unpack：npm install browser-unpack -g</p>
+<p>将前面生成的compile.js解包：browser-unpack &lt; compiled.js</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    "<span class="attribute">id</span>":<span class="value"><span class="number">1</span></span>,</span><br><span class="line">    "<span class="attribute">source</span>":<span class="value"><span class="string">"module.exports = function(x) &#123;\n  console.log(x);\n&#125;;"</span></span>,</span><br><span class="line">    "<span class="attribute">deps</span>":<span class="value">&#123;&#125;</span><br><span class="line">  </span>&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    "<span class="attribute">id</span>":<span class="value"><span class="number">2</span></span>,</span><br><span class="line">    "<span class="attribute">source</span>":<span class="value"><span class="string">"var foo = require(\"./foo\");\nfoo(\"Hi\");"</span></span>,</span><br><span class="line">    "<span class="attribute">deps</span>":<span class="value">&#123;"<span class="attribute">./foo</span>":<span class="value"><span class="number">1</span></span>&#125;</span>,</span><br><span class="line">    "<span class="attribute">entry</span>":<span class="value"><span class="literal">true</span></span><br><span class="line">  </span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>browerify 将所有模块放入一个数组，id 属性是模块的编号，source 属性是模块的源码，deps 属性是模块的依赖。<br>main.js 里面加载了 foo.js，所以 deps 属性就指定 ./foo 对应1号模块。执行的时候，浏览器遇到 require(‘./foo’) 语句，就自动执行1号模块的 source 属性，并将执行后的 module.exports 属性值输出。</p>
+</blockquote>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/js模块化/">js模块化</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/06/prototype/"  data-tooltip="prototype">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxFind/" data-tooltip="linuxFind">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/06/prototype/"  data-tooltip="prototype">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxFind/" data-tooltip="linuxFind">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/06/CMD/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

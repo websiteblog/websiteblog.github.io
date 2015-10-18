@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>gitBase - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="git是分布式版本控制系统，客户端并不只提取最新版本的文件快照，而是把原始的代码仓库完整地镜像下来。如此一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜 像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。可以指定和若干不同的远端代码仓库进行交互。籍此，你就可以在同一个项目中，分别和不同工作小组的人相互协作。
+一、git的工作方式：Git 更像是把变化的">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="gitBase">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/02/gitBase/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="git是分布式版本控制系统，客户端并不只提取最新版本的文件快照，而是把原始的代码仓库完整地镜像下来。如此一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜 像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。可以指定和若干不同的远端代码仓库进行交互。籍此，你就可以在同一个项目中，分别和不同工作小组的人相互协作。
+一、git的工作方式：Git 更像是把变化的">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gitBase">
+<meta name="twitter:description" content="git是分布式版本控制系统，客户端并不只提取最新版本的文件快照，而是把原始的代码仓库完整地镜像下来。如此一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜 像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。可以指定和若干不同的远端代码仓库进行交互。籍此，你就可以在同一个项目中，分别和不同工作小组的人相互协作。
+一、git的工作方式：Git 更像是把变化的">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            gitBase
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Wed Sep 02 2015 12:33:22 GMT+0800">
+	
+		    02/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><strong>git是分布式版本控制系统</strong>，客户端并不只提取最新版本的文件快照，而是把原始的代码仓库完整地镜像下来。如此一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜 像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。可以指定和若干不同的远端代码仓库进行交互。籍此，你就可以在同一个项目中，分别和不同工作小组的人相互协作。</p>
+<h2 id="一、git的工作方式：">一、git的工作方式：</h2><p>Git 更像是把变化的文件作快照后，记录在一个微型的文件系统中，保存一个指向这次快照的索引，若文件没有变化，Git 不会再次保存，而只对上次保存的快照作一链接。Git近乎所有的操作都是本地化执行，所以操作非常快。</p>
+<p>Git使用SHA-1 算法计算数据的校验和，通过对文件的内容或目录的结构计算出一个 SHA-1 哈希值，作为指纹字符串：作索引。该字串由 40 个十六进制字符（0-9 及 a-f）组成。</p>
+<p><strong>git是一套内容寻址文件系统。</strong></p>
+<blockquote>
+<p>-1、git init时会创建一个.git目录，几乎git所有存储与操作都位于该目录下，备份或者复制一个库，基本上将这一目录老帖到其他地方就可以了。</p>
+<p>-2、.git目录中，config包含特有的项目配置；.gitignore 文件中管理的忽略模式；</p>
+<p>-3、四个重要的文件或目录：HEAD及index文件，objects(存储所有数据内容)及refs目录(存储指向数据[分支]的提交对象的指针)；HEAD文件指向当前分支，index保存了暂存区的信息。</p>
+<p>-4、git hash-object -w 指示 hash-object 命令存储 (数据) 对象，若不指定这个参数该命令仅仅返回键值。</p>
+<p>-5、git cat-file -p：cat-file 命令可以将数据内容取回，参数p让该命令输出数据内容的类型。</p>
+<p>-6、git cat-file -p 83ba &gt; test.txt：将文件恢复到某一个版本。</p>
+<p>-7、对象存储的并不是文件名而仅仅是文件内容。</p>
+</blockquote>
+<p>二、git区域与搭建git环境：<br>1、暂存区：已修改，未commit。<br>2、工作区：已跟踪且有修改，还没add；git checkout将工作区的修改全部撤销，如果暂存区有，则恢复到暂存区的状态；没有到版本库取。<br>3、工作区未跟踪：未跟踪文件，未纳入git管理；可能通过git clean -f fileName/ -d dirName清除文件或目录<br>4、原始状态：未跟踪，未修改<br>5、回退merge：只是merge了，git reset回退；merge以后还有别的操作get revert -m <merge前的版本号>。<br>6、reset会让commit修改的内容丢失，用git rebase -i HEAD~2，再git commit –amend。</merge前的版本号></p>
+<p>暂存区——&gt;工作区(reset HEAD)<br>版本库——&gt;原始状态(reset –hard HEAD)<br>工作区——&gt;原始状态(checkout)<br>未跟踪——&gt;原始状态(clean -f)</p>
+<h2 id="三、git常用命令讲解：">三、git常用命令讲解：</h2><p>git init <em>初始化本地仓库</em><br>git config –global user.name “Some One”<br>git config –global user.email “someone@gmail.com”<br>git config –global color.status/ diff / branch等 <em>配置颜色</em><br>$ git config –global alias.co checkout  <em>设置命令的别名</em><br>$ git config –global alias.br branch<br>$ git config –global alias.ci commit<br>$ git config –global alias.st status<br>git config –global alias.unstage ‘reset HEAD –’</p>
+<blockquote>
+<p><em>注：</em>例如取消暂存，两条命令合并<br>git unstage fileA<br>$ git reset HEAD fileA</p>
+</blockquote>
+<p>git clone repo地址 <em>clone远程仓库</em><br>git status <em>查看当前版本状态</em></p>
+<p>git add ‘xxx’<br>git add .</p>
+<p>git commit -m ‘xxx’   <em>提交</em><br>git commit –amend -m ‘xxx’  <em>合并上一次提交（用于反复修改）</em><br>git commit -am ‘xxx’  <em>将add和commit合为一步</em></p>
+<p>git rm xxx    <em>删除index中的文件**<br>git rm -r </em>   <em>递归删除</em></p>
+<p>git show dfb02e  <em>显示某个提交的详细内容</em><br>git show HEAD    <em>显示HEAD提交日志</em><br>git show HEAD^   <em>显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本</em></p>
+<p>git tag          <em>显示已存在的tag</em><br>git tag -a v2.0 -m ‘xxx’  <em>增加v2.0的tag</em><br>git show v2.0    <em>显示v2.0的日志及详细内容</em><br>git log v2.0     <em>显示v2.0的日志</em></p>
+<p>git diff         <em>显示所有未添加至index的变更</em><br>git diff –cached   <em>显示所有已添加index但还未commit的变更</em><br>git diff HEAD^      <em>比较与上一个版本的差异</em><br>git diff HEAD – ./lib   <em>比较与HEAD版本lib目录的差异</em><br>git diff origin/master..master   <em>比较远程分支master上有本地分支master上没有的</em><br>git diff origin/master..master –stat  <em>只显示差异的文件，不显示具体内容</em></p>
+<p>git remote add origin git+ssh://git@192.168.53.168/VT.git <em>增加远程定义（用于push/pull/fetch）</em><br>git branch  <em>显示本地分支</em><br>git branch –contains 50089  <em>显示包含提交50089的分支</em><br>git branch -a  <em>显示所有分支</em><br>git branch -r  <em>显示所有原创分支</em><br>git branch –merged  <em>显示所有已合并到当前分支的分支</em><br>git branch –no-merged  <em>显示所有未合并到当前分支的分支</em><br>git branch -m master master_copy  <em>本地分支改名</em><br>git branch -d hotfixes/BJVEP933  <em>删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）</em><br>git branch -D hotfixes/BJVEP933  <em>强制删除分支hotfixes/BJVEP933</em></p>
+<p>git checkout -b master_copy          <em>从当前分支创建新分支master_copy并检出</em><br>git checkout features/performance    <em>检出已存在的features/performance分支</em><br>git checkout –track hotfixes/BJVEP933  <em>检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</em><br>git checkout v2.0    <em>检出版本v2.0</em><br>git checkout -b devel origin/develop  <em>从远程分支develop创建新本地分支devel并检出</em><br>git checkout – README   <em>检出head版本的README文件（可用于修改错误回退）</em></p>
+<p>git merge origin/master     <em>合并远程master分支至当前分支</em><br>git cherry-pick ff44785404a8e  <em>合并提交ff44785404a8e的修改</em></p>
+<p>git push origin master      <em>将当前分支push到远程master分支</em><br>git push origin :hotfixes/BJVEP933    <em>删除远程仓库的hotfixes/BJVEP933分支</em><br>git push –tags     <em>把所有tag推送到远程仓库</em></p>
+<p>git fetch              <em>获取所有远程分支（不更新本地分支，另需merge）</em><br>git fetch –prune      <em>获取所有原创分支并清除服务器上已删掉的分支</em><br>git pull origin master <em>获取远程分支master并merge到当前分支</em><br>git mv README README2  <em>重命名文件README为README2</em></p>
+<p>git reset –hard HEAD  <em>将当前版本重置为HEAD（通常用于merge失败回退）</em><br>git rebase<br>git revert dfb02e6e4f2f7b573337763e5c0013802e392818  <em>撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818</em></p>
+<p>git ls-files           <em>列出git index包含的文件</em></p>
+<p>git show-branch        <em>图示当前分支历史</em><br>git show-branch –all  <em>图示所有分支历史</em><br>git whatchanged        <em>显示提交历史对应的文件修改</em></p>
+<p>git ls-tree HEAD    <em>内部命令：显示某个git对象</em><br>git rev-parse v2.0  <em>内部命令：显示某个ref对于的SHA1 HASH</em></p>
+<p>git reflog    <em>显示所有提交，包括孤立节点</em><br>git log -p -2  <em>仅显示最近的两次更新提交的内容差异</em><br>git log –pretty=format:’%h %s’ –graph  <em>图示提交日志</em></p>
+<blockquote>
+<p><strong>–pretty参数值：</strong><br>-oneline 将每个提交放在一行显示<br>-short，full 和fuller 展示的信息或多或少有些不同<br>-format %H  提交对象（commit）的完整哈希字串<br>%h  提交对象的简短哈希字串<br>%T  树对象（tree）的完整哈希字串<br>%t  树对象的简短哈希字串<br>%P  父对象（parent）的完整哈希字串<br>%p  父对象的简短哈希字串<br>%an 作者（author）的名字<br>%ae 作者的电子邮件地址<br>%ad 作者修订日期（可以用 -date= 选项定制格式）<br>%ar 作者修订日期，按多久以前的方式显示<br>%cn 提交者(committer)的名字<br>%ce 提交者的电子邮件地址<br>%cd 提交日期<br>%cr 提交日期，按多久以前的方式显示<br>%s  提交说明</p>
+</blockquote>
+<p>其他参数及说明：<br>–stat 显示每次更新的文件修改统计信息。<br>–shortstat 只显示 –stat 中最后的行数修改添加移除统计。<br>–name-only 仅在提交信息后显示已修改的文件清单。<br>–name-status 显示新增、修改、删除的文件清单。<br>–abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。<br>–relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。<br>–graph 显示 ASCII 图形表示的分支合并历史。<br>-(n)    仅显示最近的 n 条提交<br>–since, –after 仅显示指定时间之后的提交。<br>–until, –before 仅显示指定时间之前的提交。<br>–author 仅显示指定作者相关的提交。<br>–committer 仅显示指定提交者相关的提交。<br>如：git log –pretty=”%h - %s” –author=gitster –since=”2008-10-01” \<br>   –before=”2008-11-01” –no-merges – t/</p>
+<p>git show HEAD~3<br>git show -s –pretty=raw 2be7fcb476<br>git show HEAD@{5}<br>git show master@{yesterday}    <em>显示master分支昨天的状态                      </em></p>
+<p>git stash        <em>暂存当前修改，将所有至为HEAD状态</em><br>git stash list   <em>查看所有暂存</em><br>git stash show -p stash@{0}  <em>参考第一次暂存</em><br>git stash apply stash@{0}    <em>应用第一次暂存</em></p>
+<p>git grep “delete from”    <em>文件中搜索文本“delete from”</em><br>git grep -e ‘#define’ –and -e SORT_DIRENT</p>
+<h2 id="四、git中的dangling对象：">四、git中的dangling对象：</h2><p>1、git管理项目时，在提交之前，对文件的每次修改，都进行git add去更新index文件 ，产生很多dangling blob与dangling commit对象。<br>2、git gc –prune=”0 days”或者git prune：在达到一定条件下会清除这些dangling对象，git prune –dry-run是查看。<br>3、tree对象，记录一个blob对象的SHA-1值，权限，名字等信息；树对象于文件系统中的目录，记录多个文件及目录。<br>4、git cat-file -t id(前4位)：返回其对象类型tree/blob/commit。<br>5、检查没有被引用的blob，tree，commit对象<br>6、git fsck –lost-found  将”悬空”对象写入到.git/lost-found/commit/ 或 .git/lost-found/other/目录中。<br>:其他参数：<br>:1、–root   报告当前repo的根节点。<br>:2、–tags   报告检查过的tags。<br>:3、–no-reflog   将那些仅被reflog引用的commit视为unreachable。<br>7、find .git/objects</p>
+<blockquote>
+<p>如果一个对象已经被pack，那么git prune不会删除。<br>8、git repack -a -d  会直接删掉pack文件中的dangling对象。<br>git repack -A -d 并不会立即删除，而是将pack文件中的dangling object重新以松散对象的形式存储在database中。也就是把dangling object从pack文件中”吐出来”。</p>
+</blockquote>
+<p>五：mktree、write-tree、read-tree、commit-tree<br>tree对象：tree相当于unix的目录，blob大致相当于inodes或文件内容。一个tree对象包含一条或者多条记录，每条记录有一个指向blob或子tree对象的SHA-1指针。<br>git cat-file -p master^{tree}：分支上最新提交的tree对象。<br>git cat-file -p：让该命令输出数据内容的类型</p>
+<p>自己创建tree：通常根据暂存区或index来创建tree。<br>git update-index –add –cacheinfo 100644：<br>创建index，将文件的首个版本添加到一个新的暂存区；<br>由于原来不在暂存区，故加参数–add；<br>当前添加的文件 并不在当前目录下，而是数据库中，帮加参数–cacheinfo;<br>指定文件模式：10044</p>
+<p>git write-tree SHA-1 ：命令将暂存区域的内容写到一个 tree 对象，如果tree对象不存在，会自动根据 index 状态创建一个 tree 对象。</p>
+<p>read-tree 命令将 tree 对象读到暂存区域中去。在这时，通过传一个 –prefix 参数给 read-tree，将一个已有的 tree 对象作为一个子 tree 读到暂存区域。</p>
+<p>使用 commit-tree 命令，指定一个 tree 的 SHA-1，如果有任何前继提交对象，也可以指定。</p>
+<p>七：远程服务(git可以有多个远程服务端,可以有多个服务端并能从其中一个（合并工作）读取再写入另一个)<br>添加：git remote add anotherName Url<br>本地分支与远程分支比较：git diff master..anotherName/master<br>查看远程分支HEAD指针的改动：git log remote/branch</p>
+<p>八：恢复git rebase<br>git rebase <commitid><br>git reset –hard/–soft HEAD^ 把上面的恢复的提交删除</commitid></p>
+<p>git cherry-pick</p>
+<p>十、git log和git reflog高阶运用：</p>
+<p>十一、缓存cached<br>git reset/rm –cached<br>git diff –cached</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/git/">git</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxFind/"  data-tooltip="linuxFind">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxGrep/" data-tooltip="linuxGrep">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxFind/"  data-tooltip="linuxFind">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxGrep/" data-tooltip="linuxGrep">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/gitBase/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

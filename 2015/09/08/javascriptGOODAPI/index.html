@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>javascript好用的API - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="Function.prototype.bindbind() 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 this 值。1234567891011121314this.x = 9; var module = &amp;#123;  x: 81,  getX: function() &amp;#123; return this.x; &amp;#125;&amp;#125;;module.getX(); // 81">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="javascript好用的API">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="Function.prototype.bindbind() 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 this 值。1234567891011121314this.x = 9; var module = &amp;#123;  x: 81,  getX: function() &amp;#123; return this.x; &amp;#125;&amp;#125;;module.getX(); // 81">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript好用的API">
+<meta name="twitter:description" content="Function.prototype.bindbind() 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 this 值。1234567891011121314this.x = 9; var module = &amp;#123;  x: 81,  getX: function() &amp;#123; return this.x; &amp;#125;&amp;#125;;module.getX(); // 81">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            javascript好用的API
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Tue Sep 08 2015 11:09:28 GMT+0800">
+	
+		    08/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Function.prototype.bind<br>bind() 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 this 值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.x = <span class="number">9</span>; </span><br><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">  x: <span class="number">81</span>,</span><br><span class="line">  getX: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.getX(); <span class="comment">// 81</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getX = <span class="built_in">module</span>.getX;</span><br><span class="line">getX(); <span class="comment">// 9, 因为在这个例子中，"this"指向全局对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个'this'绑定到module的函数</span></span><br><span class="line"><span class="keyword">var</span> boundGetX = getX.bind(<span class="built_in">module</span>);</span><br><span class="line">boundGetX(); <span class="comment">// 81</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>IE8及以下版本中不支持</p>
+</blockquote>
+<p>不支持的替代方案：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Function</span>.prototype.bind) &#123;</span><br><span class="line">  <span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span> (<span class="params">oThis</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span> !== <span class="string">"function"</span>) &#123;</span><br><span class="line">      <span class="comment">// closest thing possible to the ECMAScript 5 internal IsCallable function</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">"Function.prototype.bind - what is trying to be bound is not callable"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> aArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>), </span><br><span class="line">        fToBind = <span class="keyword">this</span>, </span><br><span class="line">        fNOP = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">        fBound = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> fToBind.apply(<span class="keyword">this</span> <span class="keyword">instanceof</span> fNOP &amp;&amp; oThis</span><br><span class="line">                                 ? <span class="keyword">this</span></span><br><span class="line">                                 : oThis || <span class="built_in">window</span>,</span><br><span class="line">                               aArgs.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)));</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    fNOP.prototype = <span class="keyword">this</span>.prototype;</span><br><span class="line">    fBound.prototype = <span class="keyword">new</span> fNOP();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fBound;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>this指向是在运行函数时确定的，而不是定义函数时候确定的，最初的做法是缓存上下文对象，<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.nickname = name;</span><br><span class="line">  <span class="keyword">this</span>.distractedGreeting = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">// &lt;-- 注意这一行!</span></span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Hello, my name is "</span> + self.nickname); <span class="comment">// &lt;-- 还有这一行!</span></span><br><span class="line">    &#125;, <span class="number">500</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> alice = <span class="keyword">new</span> Person(<span class="string">'Alice'</span>);</span><br><span class="line">alice.distractedGreeting();</span><br></pre></td></tr></table></figure><br>解析字符串对象<br>我们都知道，JavaScript对象可以序列化为JSON，JSON也可以解析成对象，但是问题是如果出现了一个既不是JSON也不是对象的”东西”，转成哪一方都不方便，那么eval就可以派上用场<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="string">"&#123;a:1,b:2&#125;"</span>; <span class="comment">// 看起来像对象的字符串</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">"("</span>+ obj +<span class="string">")"</span>) <span class="comment">// &#123;a: 1, b: 2&#125;</span></span><br></pre></td></tr></table></figure><br>因为 eval 可以执行字符串表达式，我们希望将 obj 这个字符串对象 执行成真正的对象，那么就需要用eval。但是为了避免eval 将带 {} 的 obj 当语句来执行，我们就在obj的外面套了对 ()，让其被解析成表达式。</p>
+</blockquote>
+<p>&amp; (按位与)<br>判断一个数是否为2的n次幂，可以将其与自身减一相与<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">number</span> = <span class="number">4</span></span><br><span class="line">(<span class="built_in">number</span> &amp; <span class="built_in">number</span> -<span class="number">1</span>) === <span class="number">0</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>^ (按位异或)<br>不同第三个变量，就可以交换两个变量的值<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">var</span> <span class="tag">a</span> = <span class="number">4</span>,<span class="tag">b</span> = <span class="number">3</span></span><br><span class="line"><span class="tag">a</span> = <span class="tag">a</span> ^ <span class="tag">b</span> <span class="comment">// 7</span></span><br><span class="line"><span class="tag">b</span> = <span class="tag">a</span> ^ <span class="tag">b</span> <span class="comment">// 4</span></span><br><span class="line"><span class="tag">a</span> = <span class="tag">b</span> ^ <span class="tag">a</span> <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></p>
+<p>想得到format后的时间？现在不用再get年月日时分秒了，三步搞定<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\//g</span>;</span><br><span class="line">(temp.toLocaleDateString() + <span class="string">' '</span> + temp.toLocaleTimeString().slice(<span class="number">2</span>)).replace(regex,<span class="string">'-'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>想将format后的时间转换为时间对象？直接用Date的构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2015-5-7 9:04:10"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>想将一个标准的时间对象转换为unix时间戳？valueOf搞定之<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">new</span> <span class="built_in">Date</span>).valueOf();</span><br><span class="line"><span class="comment">// 快速得到时间戳</span></span><br><span class="line">+<span class="keyword">new</span> <span class="built_in">Date</span></span><br></pre></td></tr></table></figure></p>
+<p>快速转换为数字类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var number = <span class="string">"23"</span></span><br><span class="line">typeof +number <span class="comment">// number</span></span><br><span class="line"><span class="string">"100"</span> | <span class="number">0</span></span><br><span class="line"><span class="string">"100"</span> &gt;&gt; <span class="number">0</span></span><br><span class="line"><span class="string">"100"</span> &lt;&lt; <span class="number">0</span></span><br><span class="line"><span class="string">"100"</span> &gt;&gt; <span class="number">0</span></span><br><span class="line"><span class="string">"100"</span> &gt;&gt;&gt; <span class="number">0</span> <span class="comment">//仅适用于正数</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Firefox对位操作进行了优化，运行的代码比parseInt和+运算速度快约99％。</span><br><span class="line"> * 而Chrome显然对位运算符没有偏爱，他们比parseInt函数还慢62％。</span><br><span class="line"> * parseFloat比+运算符在两种浏览器（Firefox 28％，Chrome 39％）上都要快。</span><br><span class="line"> */</span></span><br></pre></td></tr></table></figure></p>
+<p>获取原型主的属性和方法：<br>Object.create(Shape.prototype)</p>
+<p>重组对象：<br>删除操作比分配一个null属性慢很多,但delete可以改变对象结构，也可以防止对象的内存泄漏的情况。</p>
+<p>后面添加属性：<br>最好一开始定义好对象的架构，后面再追加的属性，比原型定义要慢很多。</p>
+<p>字符串处理：<br>+=运算比+快很多，他们比String.prototype.concat和Array.prototype.join都更快，Array.prototype.join是最慢的。</p>
+<p>正则表达式方法：<br>test方法最快，indexOf方法返回索引位置<br>exec方法和match速度差不多，</p>
+<p>限制声明/传递变量的范围：<br>你调用一个函数，浏览器必须做一些所谓的范围查找，它的昂贵程度取决于它要查找多少范围。尽量不要依辣全局/高范围的变量，尽量使局部范围变量，并将它们传递给函数。更少的范围查找，更少的牺牲速度。</p>
+<p>jquery的使用：<br>对于原生比较方便的属性，尽量不要用jQuery来代替。原生的速度比jQuery快100%。</p>
+<p>splice：返回被删除元素组成的数组，或者为空数组</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/CSS3-webket/"  data-tooltip="CSS3 webkit">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/07/publishAndSub/" data-tooltip="javascript发布与订阅">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/CSS3-webket/"  data-tooltip="CSS3 webkit">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/07/publishAndSub/" data-tooltip="javascript发布与订阅">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/javascriptGOODAPI/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

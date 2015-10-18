@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>linuxFind - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="find是常用的查找命令：find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt;
+find  &amp;lt;dir&amp;gt; -name &amp;lt;’fileName Conditiion’&amp;gt; -print：查找文件
+find  . -perm -005：根据权限查找，这三个数字分别代表：读、写、执行权限。
+find &amp;lt;dir&amp;gt; -path &amp;lt;’dir">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="linuxFind">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/02/linuxFind/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="find是常用的查找命令：find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt;
+find  &amp;lt;dir&amp;gt; -name &amp;lt;’fileName Conditiion’&amp;gt; -print：查找文件
+find  . -perm -005：根据权限查找，这三个数字分别代表：读、写、执行权限。
+find &amp;lt;dir&amp;gt; -path &amp;lt;’dir">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linuxFind">
+<meta name="twitter:description" content="find是常用的查找命令：find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt;
+find  &amp;lt;dir&amp;gt; -name &amp;lt;’fileName Conditiion’&amp;gt; -print：查找文件
+find  . -perm -005：根据权限查找，这三个数字分别代表：读、写、执行权限。
+find &amp;lt;dir&amp;gt; -path &amp;lt;’dir">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            linuxFind
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Wed Sep 02 2015 15:03:16 GMT+0800">
+	
+		    02/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h2 id="find是常用的查找命令：">find是常用的查找命令：</h2><p>find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</p>
+<p>find  &lt;dir&gt; -name &lt;’fileName Conditiion’&gt; -print：查找文件</p>
+<p>find  . -perm -005：根据权限查找，这三个数字分别代表：读、写、执行权限。</p>
+<p>find &lt;dir&gt; -path &lt;’dir Conditiion’&gt; -prune -o -print：查找目录，prune指出要忽略的目录；如果同时使用了-depth，会忽略prune参数选项。</p>
+<p>find test \(-path test/test4 -o -path test/test3 \) -prune -o -name “*.log” -print</p>
+<blockquote>
+<p>注：\表示引用，即指示 shell 不对后面的字符作特殊解释，留给find命令解释；圆括号表示表达式的结合。</p>
+</blockquote>
+<p>按文件属主查找：<br>find &lt;-path&gt; -user &lt;userName&gt; -print<br>find &lt;path&gt; -nouser &lt;userName&gt; -print 可以查找到帐户已删除的文件</p>
+<p>find &lt;path&gt; -group &lt;groupName&gt; -print<br>find &lt;path&gt; -nogroup -print 查找没有有效所属用户组的所有文件</p>
+<p>find / -mtime -5 -print 更改时间在5日以内的(+3：距当前三日以前的)  -atime  -ctime</p>
+<p>find -newer &lt;fileName&gt; ! -newer &lt;fileName&gt; 比前面文件新，但比后面文件旧的文件。</p>
+<p>find &lt;path&gt; -type d  目录查找，l链接文件查找。</p>
+<p>find &lt;path&gt; -mount 当前文件系统，不进入其他文件系统查找。</p>
+<p>——depath：先匹配所有文件，再在子目录中查找。</p>
+<h2 id="其他查找命令：">其他查找命令：</h2><p>locate：查找文件。如果有查找不到的新文件，执行updatedb，因为其搜索的是一个/var/lib/locatedb数据库，如果查找不到手动更新数据库。</p>
+<p>whereis：只用于程序名的搜索(-b 二进制文件)(-m man说明文件)(-s 源代码文件)，省略参数返回所有信息。</p>
+<p>which：在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。</p>
+<p>type：用来区分某个命令到底是由shell自带的，还是由shell外部的独立二进制文件提供的；如果是外部提供的，-p参数可以显示命令的路径。</p>
+<h2 id="find与xargs：">find与xargs：</h2><p>ind命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部分文件而不是全部<br>find . -type f -print | xargs file  查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件</p>
+<p>find / -name “core” -print | xargs echo “” &gt;/tmp/core.log  在整个系统中查找内存信息转储文件(core dump) ，把结果保存到/tmp/core.log 文件中</p>
+<p>find . -perm -7 -print | xargs chmod o-w  当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限</p>
+<p>find . -type f -print | xargs grep “hostname”  grep命令在所有的普通文件中搜索hostname这个词</p>
+<p>find . -name “*.log” | xargs -i mv {} test4  xargs执行mv </p>
+<blockquote>
+<p><strong>注：</strong>使用-i参数默认的前面输出用{}代替，-I参数可以指定其他代替字符。</p>
+</blockquote>
+<p>find . -name “*.log” | xargs -p -i mv {}</p>
+<blockquote>
+<p><strong>注：</strong>-p参数会提示让你确认是否执行后面的命令,y执行，n不执行。</p>
+</blockquote>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/linux命令/">linux命令</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/06/CMD/"  data-tooltip="AMD与CMD及其他模块化工具">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/gitBase/" data-tooltip="gitBase">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/06/CMD/"  data-tooltip="AMD与CMD及其他模块化工具">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/gitBase/" data-tooltip="gitBase">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/linuxFind/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

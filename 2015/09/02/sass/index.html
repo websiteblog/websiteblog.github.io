@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>sass - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="定义变量：(常用关键字!global   !default  !optional)$mainColor:  #efefef;$borderDirect: top!default;
+引用定义的变量为其一部分：border-#{$borderDirect}
+选择器的嵌套规则：12345body&amp;#123;    div&amp;#123;        p&amp;#123;&amp;#125;    &amp;#125;&amp;#125">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="sass">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/02/sass/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="定义变量：(常用关键字!global   !default  !optional)$mainColor:  #efefef;$borderDirect: top!default;
+引用定义的变量为其一部分：border-#{$borderDirect}
+选择器的嵌套规则：12345body&amp;#123;    div&amp;#123;        p&amp;#123;&amp;#125;    &amp;#125;&amp;#125">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sass">
+<meta name="twitter:description" content="定义变量：(常用关键字!global   !default  !optional)$mainColor:  #efefef;$borderDirect: top!default;
+引用定义的变量为其一部分：border-#{$borderDirect}
+选择器的嵌套规则：12345body&amp;#123;    div&amp;#123;        p&amp;#123;&amp;#125;    &amp;#125;&amp;#125">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            sass
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Wed Sep 02 2015 06:28:55 GMT+0800">
+	
+		    02/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>定义变量：(常用关键字!global   !default  !optional)<br>$mainColor:  #efefef;<br>$borderDirect: top!default;</p>
+<p>引用定义的变量为其一部分：<br>border-#{$borderDirect}</p>
+<p>选择器的嵌套规则：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span>&#123;</span><br><span class="line">    <span class="tag">div</span>&#123;</span><br><span class="line">        <span class="tag">p</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>属性的嵌套规则：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font</span>:&#123;</span><br><span class="line">    <span class="tag">family</span>:</span><br><span class="line">    <span class="tag">size</span>:</span><br><span class="line">    <span class="tag">weight</span>:</span><br><span class="line">    <span class="tag">padding</span>:&#123;</span><br><span class="line">	    <span class="attribute">left</span>:</span><br><span class="line">	    <span class="attribute">right</span>:</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数据类型：<br>数字：如1.2  13  13px<br>数学函数：<br>percentage($value)——转换成百分比<br>round($value)——四舍五入成一个整数<br>ceil($value)——大于自己的下一位整数<br>floor($value)——去除小数部分<br>abs($value)——绝对值<br>min($number……)——找出数值之间的最小值<br>max($numbers……)——找出数值之间的最大值</p>
+<p>文本字符串：’foo’  “bar”  baz<br>字符串函数：<br>unquote($string)——-删除字符串中的引号<br>quote($string)———-给字符串引号</p>
+<p>颜色：blue #00ffff<br>颜色函数：<br>rgba(255,2,4,0.3)  rgb()<br>lighten($color , $amount) darken($color , $amount) 改变亮度，变亮/暗<br>red($color) green($color) blue($color)  从一个颜色中获取其中某颜色色值<br>mix($color-1,$color-2,[$weight]) 把两种颜色混合在一起<br>hsla($hue,$saturation,$lightness,$alpha) 色相、饱和度、亮度、透明度<br>hue($color)  saturation($color) lightness($color) 获取颜色中的相关值<br>adjust-hue($color,$degrees) saturate($color,$amount) desaturate($color,$amount)改变相关值，获取新颜色<br>grayscale($color) 颜色变灰,相当于desaturate($color,100%)<br>complement($color) 返回一个补充色,相当于adjust-hue($color,180deg)<br>invert($color) 反回一个反相色，红、绿、蓝色值倒过来</p>
+<p>布尔：true  false<br>空值：null</p>
+<p>List类型：<br>一维：如$font-size:1.5em 1em 0 2em<br>多维：如$borderWidth: 5px 10px, 20px 30px 或者(5px 10px) (20px 30px)<br>List函数：<br>length($list)<br>nth($list , $n)—–返回指定列表中的某个值<br>join($list1 , $list2 , [$separator])——将两个列表连接在一起，成一个列表<br>append($list , $val , [$separator])<br>zip($lists……)——-将多个合并成一个多维列表<br>index($list , $value)———返回一个值在列表中的位置<br>一维循环：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@each <span class="variable">$var</span> <span class="keyword">in</span>  list&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>多维循环：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@each <span class="variable">$var1</span>，<span class="variable">$var2</span> <span class="keyword">in</span> list&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Map类型：如$map: (key1:value1, key2:value2)<br>Map函数：<br>map-get($map , $key)<br>map-merge($map1 , $map2)<br>map-keys($map)<br>map-value($map)<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@each <span class="variable">$key</span>, <span class="variable">$value</span> <span class="keyword">in</span> <span class="variable">$map</span>&#123;</span><br><span class="line">    #&#123;<span class="variable">$key</span>&#125; &#123;</span><br><span class="line">        font-size:<span class="variable">$value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>功能性函数：<br>type-of($value)<br>unit($unmber)—–返回单位<br>unitless($unmber)—–是否有单位<br>comparable($unmber1 , $unmber2)——判断两个值是否可以进行加、减及合并操作</p>
+<p>@if语句：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@if</span>  condition &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="variable">@else</span> if condition &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="variable">@else</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>@for语句：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">for</span> <span class="variable">$var</span> from <span class="keyword">start</span> through <span class="keyword">end</span>&#123; </span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>@each in语句：<br>@each $var in <list or="" map=""></list></p>
+<p>定义函数：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="function"><span class="keyword">function</span> <span class="title">funName</span><span class="params">([paramList])</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>调用：funName();</p>
+<p>分享的十二栅格的实现：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">@mixin make-grid-columns&#123;</span><br><span class="line">	@for <span class="variable">$i</span> from (<span class="number">1</span>) through <span class="variable">$grid-columns</span>&#123;</span><br><span class="line">		<span class="variable">$list</span>:<span class="string">"#&#123;$list&#125;,.col-xs-#&#123;$i&#125;,.col-sm-#&#123;$i&#125;,.col-md-#&#123;$i&#125;,.col-lg-#&#123;$i&#125;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	#&#123;<span class="variable">$list</span>&#125;&#123;</span><br><span class="line">		position: relative;</span><br><span class="line">		min-height: <span class="number">1</span>px;</span><br><span class="line">		padding-left:(<span class="variable">$grid-gutter-width</span>/<span class="number">2</span>);</span><br><span class="line">		padding-right:(<span class="variable">$grid-gutter-width</span>/<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">@mixin float-grid-columns(<span class="variable">$class</span>)&#123;</span><br><span class="line">	@for <span class="variable">$i</span> from (<span class="number">1</span>) through <span class="variable">$grid-columns</span>&#123;</span><br><span class="line">		<span class="variable">$list</span>:<span class="string">"#&#123;$list&#125;,.col-#&#123;$class&#125;-#&#123;$i&#125;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	#&#123;<span class="variable">$list</span>&#125;&#123;</span><br><span class="line">		float:left;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@mixin make-grid(<span class="variable">$class</span>)&#123;</span><br><span class="line">	@include float-grid-columns(<span class="variable">$class</span>);</span><br><span class="line">	@for <span class="variable">$i</span> from <span class="number">0</span> through <span class="variable">$grid-columns</span>&#123;</span><br><span class="line">		@include calc-grid-column(<span class="variable">$i</span>,<span class="variable">$class</span>,width);</span><br><span class="line">	&#125;</span><br><span class="line">	@for <span class="variable">$i</span> from <span class="number">0</span> through <span class="variable">$grid-columns</span>&#123;</span><br><span class="line">		@include calc-grid-column(<span class="variable">$i</span>,<span class="variable">$class</span>,push);</span><br><span class="line">	&#125;</span><br><span class="line">	@for <span class="variable">$i</span> from <span class="number">0</span> through <span class="variable">$grid-columns</span>&#123;</span><br><span class="line">		@include calc-grid-column(<span class="variable">$i</span>,<span class="variable">$class</span>,pull);</span><br><span class="line">	&#125;</span><br><span class="line">	@for <span class="variable">$i</span> from <span class="number">0</span> through <span class="variable">$grid-columns</span>&#123;</span><br><span class="line">		@include calc-grid-column(<span class="variable">$i</span>,<span class="variable">$class</span>,offset);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@mixin calc-grid-column(<span class="variable">$index</span>,<span class="variable">$class</span>,<span class="variable">$type</span>)&#123;</span><br><span class="line">	@if ((<span class="variable">$type</span>==width) and (<span class="variable">$index</span>&gt;<span class="number">0</span>))&#123;</span><br><span class="line">		.col-#&#123;<span class="variable">$class</span>&#125;-#&#123;<span class="variable">$i</span>&#125;&#123;</span><br><span class="line">			width:percentage(<span class="variable">$index</span>/<span class="variable">$grid-columns</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	@if ((<span class="variable">$type</span>==push) and (<span class="variable">$index</span>&gt;<span class="number">0</span>))&#123;</span><br><span class="line">		.col-#&#123;<span class="variable">$class</span>&#125;-#&#123;<span class="variable">$type</span>&#125;-#&#123;<span class="variable">$i</span>&#125;&#123;</span><br><span class="line">			left:percentage(<span class="variable">$index</span>/<span class="variable">$grid-columns</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	@if ((<span class="variable">$type</span>==pull) and (<span class="variable">$index</span>&gt;<span class="number">0</span>))&#123;</span><br><span class="line">		.col-#&#123;<span class="variable">$class</span>&#125;-#&#123;<span class="variable">$type</span>&#125;-#&#123;<span class="variable">$i</span>&#125;&#123;</span><br><span class="line">			right:percentage(<span class="variable">$index</span>/<span class="variable">$grid-columns</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	@if ((<span class="variable">$type</span>==offset) and (<span class="variable">$index</span>&gt;<span class="number">0</span>))&#123;</span><br><span class="line">		.col-#&#123;<span class="variable">$class</span>&#125;-#&#123;<span class="variable">$type</span>&#125;-#&#123;<span class="variable">$i</span>&#125;&#123;</span><br><span class="line">			margin-left:percentage(<span class="variable">$index</span>/<span class="variable">$grid-columns</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>@extend：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.message</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="hexcolor">#ccc</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="hexcolor">#333</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.error</span> &#123;</span><br><span class="line">  <span class="variable">@extend</span> .message;</span><br><span class="line">  <span class="attribute">border-color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通用定义</span></span><br><span class="line">%<span class="tag">clearfix</span><span class="pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">@mixin</span> <span class="function">clearfix</span>($<span class="attribute">extend</span>: true) &#123;</span><br><span class="line">    <span class="variable">@if</span> $extend == true &#123;</span><br><span class="line">        <span class="variable">@extend</span> %clearfix;</span><br><span class="line">    &#125; <span class="variable">@else</span> &#123;</span><br><span class="line">        <span class="keyword">&amp;</span><span class="pseudo">::after</span> &#123;</span><br><span class="line">            <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">            <span class="attribute">display</span>: table;</span><br><span class="line">            <span class="attribute">clear</span>: both;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">%<span class="tag">clearfix</span> &#123;</span><br><span class="line">    <span class="variable">@include</span> <span class="function">clearfix</span>($<span class="attribute">extend</span>: false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>相当于.message .error<br>@mixin定义组件：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@mixin clearfix(<span class="variable">$A</span>, <span class="variable">$b</span> : <span class="string">'0px'</span>)&#123;</span><br><span class="line">	……</span><br><span class="line">	&amp;:after&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>引用@mixin定义组件：@include 组件名<br>以下为在分享项目中的代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><br>@content：将内容块放到@mixin中<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@mixin</span> apply-to-ie6-only &#123;</span><br><span class="line">  * <span class="tag">html</span> &#123;</span><br><span class="line">    <span class="variable">@content</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">@include</span> apply-to-ie6-only &#123;</span><br><span class="line">  <span class="id">#logo</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="function">url</span>(<span class="string">/logo.gif</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译之后</span></span><br><span class="line">* <span class="tag">html</span> <span class="id">#logo</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="function">url</span>(<span class="string">/logo.gif</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@mixin</span> <span class="function">create-context</span>($classes...) &#123;</span><br><span class="line">  <span class="variable">@each</span> $class in $classes &#123;</span><br><span class="line">    .#&#123;$<span class="tag">class</span>&#125; <span class="keyword">&amp;</span> &#123;</span><br><span class="line">      <span class="variable">@content</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">@mixin</span> context--alternate-template &#123;</span><br><span class="line">  <span class="variable">@include</span> <span class="function">create-context</span>(about, blog) &#123;</span><br><span class="line">    <span class="variable">@content</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.header &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">12em</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line"></span><br><span class="line">  <span class="variable">@include</span> context--alternate-template &#123;</span><br><span class="line">    <span class="attribute">background</span>: green;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译之后</span></span><br><span class="line">.header &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12em</span>;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .about .header &#123;</span><br><span class="line">    <span class="attribute">background</span>: green;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .blog .header &#123;</span><br><span class="line">    <span class="attribute">background</span>: green;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@mixin</span> <span class="function">button</span>() &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="variable">@content</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.alert &#123;</span><br><span class="line">    <span class="variable">@include</span> button &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="hexcolor">#F00</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.cancel &#123;</span><br><span class="line">    <span class="variable">@include</span> button &#123;</span><br><span class="line">        <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="hexcolor">#999</span>;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译之后</span></span><br><span class="line">.alert &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">color</span>: <span class="hexcolor">#F00</span>;</span><br><span class="line">&#125;</span><br><span class="line">.cancel &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="hexcolor">#999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@media 媒体查询：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">	@include container-fixed;</span><br><span class="line">	@media (min-width: <span class="variable">$screen-sm-min</span>)&#123;</span><br><span class="line">		width: <span class="variable">$container-sm</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	@media (min-width: <span class="variable">$screen-md-min</span>)&#123;</span><br><span class="line">		width: <span class="variable">$container-md</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	@media (min-width: <span class="variable">$screen-lg-min</span>)&#123;</span><br><span class="line">		width: <span class="variable">$container-lg</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>@import文件：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"define"</span></span>;</span><br><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"mixin-common"</span></span>;</span><br><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"mixin-gridFramework"</span></span>;</span><br><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"mixin-selector"</span></span>;</span><br><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"adjust"</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>编译工具：gulp<br>比grunt配置更加方便，以管道式的编程方式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sass_path = <span class="string">'./share_sass/root.scss'</span>;</span><br><span class="line"><span class="keyword">var</span> css_path = <span class="string">'./css'</span>;</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'css'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	gulp.src(sass_path)</span><br><span class="line">	.pipe(sass())</span><br><span class="line">	.pipe(gulp.dest(css_path));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/css/">css</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxGrep/"  data-tooltip="linuxGrep">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/01/PromiseRes/" data-tooltip="Promise的实现">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/02/linuxGrep/"  data-tooltip="linuxGrep">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/01/PromiseRes/" data-tooltip="Promise的实现">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/02/sass/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

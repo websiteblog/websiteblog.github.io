@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>inheritance - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="一、John Resig’s inheritance
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950(function()&amp;#123;  var initializing = false,    // 支持function toString,用正则匹配到    f">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="inheritance">
+<meta property="og:url" content="http://websiteblog.github.io/2015/08/31/inherent/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="一、John Resig’s inheritance
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950(function()&amp;#123;  var initializing = false,    // 支持function toString,用正则匹配到    f">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="inheritance">
+<meta name="twitter:description" content="一、John Resig’s inheritance
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950(function()&amp;#123;  var initializing = false,    // 支持function toString,用正则匹配到    f">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            inheritance
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Mon Aug 31 2015 09:11:01 GMT+0800">
+	
+		    31/08/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>一、John Resig’s inheritance</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> initializing = <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 支持function toString,用正则匹配到</span></span><br><span class="line">    fnTest = <span class="regexp">/xyz/</span>.test(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;xyz;&#125;)? <span class="regexp">/\b_super\b/</span> : <span class="regexp">/.*/</span>;</span><br><span class="line">  <span class="comment">// 全局化定义Class</span></span><br><span class="line">  <span class="keyword">this</span>.Class = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  Class.extend = <span class="function"><span class="keyword">function</span>(<span class="params">prop</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 父类原型属性</span></span><br><span class="line">    <span class="keyword">var</span> _super = <span class="keyword">this</span>.prototype;</span><br><span class="line">    initializing = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// 父类原型实例</span></span><br><span class="line">    <span class="keyword">var</span> prototype = <span class="keyword">new</span> <span class="keyword">this</span>();</span><br><span class="line">    initializing = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> prop)&#123;</span><br><span class="line">      <span class="comment">/*</span><br><span class="line">       *定义prototype，如果prop的该属性是function,父类的该属性也是function,</span><br><span class="line">       *且prop的该属性中包含_super</span><br><span class="line">       */</span></span><br><span class="line">      prototype[name] = <span class="keyword">typeof</span> prop[name] == <span class="string">'function'</span> &amp;&amp; </span><br><span class="line">      <span class="keyword">typeof</span> _super[name] == <span class="string">'function'</span> &amp;&amp; fnTest.test(prop[name]) ?</span><br><span class="line">      (<span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="comment">// 如果子类属性中名为_super的暂存。</span></span><br><span class="line">          <span class="keyword">var</span> temp = <span class="keyword">this</span>._super;</span><br><span class="line">          <span class="comment">// 取父类中的同名属性</span></span><br><span class="line">          <span class="keyword">this</span>._super = _super[name];</span><br><span class="line">          <span class="keyword">var</span> ret = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">          <span class="keyword">this</span>._super = temp;</span><br><span class="line">          <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)(name, prop[name]) : prop[name];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Class</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(!initializing &amp;&amp; <span class="keyword">this</span>.init)&#123;</span><br><span class="line">        <span class="keyword">this</span>.init.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Class.newInstance = <span class="function"><span class="keyword">function</span>(<span class="params">paramArr</span>)</span>&#123;</span><br><span class="line">      initializing = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">var</span> obj = <span class="keyword">new</span> Class();</span><br><span class="line">      initializing = <span class="literal">false</span>;</span><br><span class="line">      obj.init.apply(obj, paramArr);</span><br><span class="line">      <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">    Class.prototype = prototype;</span><br><span class="line">    Class.prototype.constructor = Class;</span><br><span class="line">    Class.extend = <span class="built_in">arguments</span>.callee;</span><br><span class="line">    <span class="keyword">return</span> Class;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>二、ctrip’s inheritance<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.Core = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> slice = [].slice;</span><br><span class="line">  Core.Class = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">0</span> || <span class="built_in">arguments</span>.length &gt;<span class="number">2</span>) <span class="keyword">throw</span> <span class="string">'参数错误'</span>;</span><br><span class="line">    <span class="comment">// 定义父类</span></span><br><span class="line">    <span class="keyword">var</span> parent = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> properties = slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> properties[<span class="number">0</span>] === <span class="string">'function'</span>) parent = properties.shift();</span><br><span class="line">    properties = properties[<span class="number">0</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">klass</span> = <span class="title">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.__propertys__();</span><br><span class="line">      <span class="keyword">this</span>.initializing.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    klass.superclass = parent;</span><br><span class="line">    klass.subclasses = [];</span><br><span class="line">    <span class="keyword">var</span> sup__propertys__ = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="comment">// 存储配置属性</span></span><br><span class="line">    <span class="keyword">var</span> sub__properyts__ = properties.__propertys__ || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span>(parent)&#123;</span><br><span class="line">      <span class="comment">// 父类原型上的配置属性</span></span><br><span class="line">      <span class="keyword">if</span>(parent.prototype.__propertys__) sup__propertys__ = parent.prototype.__propertys__;</span><br><span class="line">      <span class="comment">// 原型继承</span></span><br><span class="line">      <span class="keyword">var</span> subclass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">      subclass.prototype = parent.prototype;</span><br><span class="line">      klass.prototype = <span class="keyword">new</span> subclass;</span><br><span class="line">      <span class="comment">// 将当前类，存入到父类的subclasses属性中</span></span><br><span class="line">      parent.subclasses.push(klass);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 父类原型属性</span></span><br><span class="line">    <span class="keyword">var</span> ancestor = klass.superclass &amp;&amp; klass.superclass.prototype;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> properties)&#123;</span><br><span class="line">      <span class="keyword">var</span> value = properties[name];</span><br><span class="line">      <span class="comment">// 个人认为在这里判断ancestor[name]存在，会更好</span></span><br><span class="line">      <span class="keyword">if</span>(ancestor &amp;&amp; <span class="keyword">typeof</span> value === <span class="string">'function'</span>)&#123;</span><br><span class="line">        <span class="comment">// 取出value的参数</span></span><br><span class="line">        <span class="keyword">var</span> argList = <span class="regexp">/^\s*function\s*\(([^\(\)]*?)\)\s*?\&#123;/i</span>.exec(value.toString())[i].replace(<span class="regexp">/\s/i</span>,<span class="string">''</span>).split(<span class="string">','</span>);</span><br><span class="line">        <span class="comment">// 满足条件，重定义原型属性的方法</span></span><br><span class="line">        <span class="keyword">if</span>(argList[<span class="number">0</span>] === <span class="string">'$super'</span> &amp;&amp; ancestor[name])&#123;</span><br><span class="line">          value = (<span class="function"><span class="keyword">function</span>(<span class="params">methodName,fn</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">              <span class="keyword">var</span> scope = <span class="keyword">this</span>;</span><br><span class="line">              <span class="comment">// 定义第一个参数，返回父类原型的同名方法</span></span><br><span class="line">              <span class="keyword">var</span> args = [<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> ancestor[methodName].apply(scope,<span class="built_in">arguments</span>);</span><br><span class="line">              &#125;];</span><br><span class="line">              <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>.args.concat(slice.call(<span class="built_in">arguments</span>)));</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)(name,value)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 有$super参数的，重定义该方法</span></span><br><span class="line">      klass.prototype[name] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果原型上没有初始化方法，定义</span></span><br><span class="line">    <span class="keyword">if</span>(!klass.prototype.initialize)&#123;</span><br><span class="line">      klass.prototype.initialize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 定义原型的配置属性</span></span><br><span class="line">    klass.prototype.__propertys__ = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">// 调用父类的配置及参数传的配置</span></span><br><span class="line">      sup__propertys__.call(<span class="keyword">this</span>);</span><br><span class="line">      sub__properyts__.call(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 继承父类的非原型属性</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> parent)&#123;</span><br><span class="line">      <span class="keyword">if</span>(parent.hasOwnProperty(key) &amp;&amp; key !== <span class="string">'prototype'</span> &amp;&amp; key !== <span class="string">'superclass'</span>)&#123;</span><br><span class="line">        klass[key] = parent[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    klass.prototype.constructor = klass;</span><br><span class="line">    <span class="keyword">return</span> klass;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/js库/">js库</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/31/switch/"  data-tooltip="create view and switch view">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/30/underscore/" data-tooltip="underscore算法与实现">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/31/switch/"  data-tooltip="create view and switch view">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/30/underscore/" data-tooltip="underscore算法与实现">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/08/31/inherent/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

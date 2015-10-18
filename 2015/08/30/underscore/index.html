@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>underscore算法与实现 - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="偏函数的使用:
+一、循环中的callback参数处理：1、如：each的callback,都由optimizeCb方法根据参数个数返回一个方法,如下参数为3个的情况：
+123return function(value, index, collection) &amp;#123;	return func(context,value,index,collection);&amp;#125;
+2.cb方法提供回调(第2">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="underscore算法与实现">
+<meta property="og:url" content="http://websiteblog.github.io/2015/08/30/underscore/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="偏函数的使用:
+一、循环中的callback参数处理：1、如：each的callback,都由optimizeCb方法根据参数个数返回一个方法,如下参数为3个的情况：
+123return function(value, index, collection) &amp;#123;	return func(context,value,index,collection);&amp;#125;
+2.cb方法提供回调(第2">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="underscore算法与实现">
+<meta name="twitter:description" content="偏函数的使用:
+一、循环中的callback参数处理：1、如：each的callback,都由optimizeCb方法根据参数个数返回一个方法,如下参数为3个的情况：
+123return function(value, index, collection) &amp;#123;	return func(context,value,index,collection);&amp;#125;
+2.cb方法提供回调(第2">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            underscore算法与实现
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Sun Aug 30 2015 09:00:47 GMT+0800">
+	
+		    30/08/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>偏函数的使用:</p>
+<p>一、循环中的callback参数处理：<br>1、如：each的callback,都由optimizeCb方法根据参数个数返回一个方法,如下参数为3个的情况：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(value, index, collection)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> func(context,<span class="keyword">value</span>,<span class="built_in">index</span>,collection);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.cb方法提供回调(第2个参数)是null、function、Object及其他情况的处理。</p>
+<p>4.group(behavior)方法：返回function，统一参数obj,iteratee,context；定义一个对象result,cb一个iteratee，each obj,执行iteratee获得key，调用behavior(result, value, key);返回result.<em>使用者：groupBy indexBy countBy.</em></p>
+<p>二、对象中的方法实现：<br>1、property(key)：返回一个函数，参数为obj，如果obj为null，返回void 0；否则返回对应的值。</p>
+<p>2、propertyOf(obj)：参数是null，返回一个空函数；否则返回一个函数，参数为Key，返回其相应的值。</p>
+<p>3、keys：不是obj，返回[]，nativeKeys，返回nativeKeys(obj)，for in obj，_.has(obj, key)，将key存入keys数组，hasEnumBug</p>
+<p>4、allKeys：没有nativeKeys项，其余与keys处理相同。</p>
+<p>5、values：获取obj所有的key，循环keys将value存入数组values，返回values。</p>
+<p>6、identity(value)：return value。</p>
+<p>7、has</p>
+<p>8、constant(value)：返回一个函数，函数返回value。</p>
+<p>9、matcher(attrs)：返回一个函数，处理后续传入obj与attrs的isMath。</p>
+<p>10、times：</p>
+<p>11、random(min, max)：一个参数max就是min，min是0，否则不变；return min+Math.floor(Math.random()*(max-min+1));</p>
+<p>12、extendOwn：</p>
+<p>13、isMacth(object,attrs)：取attrs的keys，如果object为null，返回keys.length取反；obj = Object(object)；循环keys.length，如果attrs[key]不等于obj[key]或者key in obj取反为真，return false；循环结束return true。</p>
+<p>14、isArguments、isFunction，isString，isNumber，isDate，isRegExp，isError：都用toString(obj)来判断。</p>
+<p>15、isNull(obj)：return obj === null。</p>
+<p>16、isBoolean(obj)：return obj === true || obj === false || toString.call(obj) === ‘[object Boolean]’。</p>
+<p>17、isNaN(obj)：return isNumber(obj) &amp;&amp; obj != +obj。</p>
+<p>18、isUndefined(obj)：return obj === void 0。</p>
+<p>19、isFinite：!isNaN(parseFloat(obj))且isFinite(obj)</p>
+<p>20、isFunction：兼容性(IE11或者safari8)</p>
+<p>21、isArguments(obj)：_.has(obj,’callee’)。</p>
+<p>三、集合中的方法实现：<br>1、each判断是类数组，直接循环，否则取对象的keys进行循环，直接执行生成的iteratee方法。<br>2、map判断是类数组，直接循环，否则取对象的keys进行循环，执行生成的iteratee方法，将执行结果存入数组，循环完扫返回数组。<br>3、reduce, reduceRight<br>4、find：调用findIndex与findKey，根据返回的key或者index，返回该值。<br>5、findIndex/findLastIndex：调用createIndexFinder(1/-1)，cb一个predicate，如果传入的参数是1就从0开始循环数组,否则从lenth-1开始，步长为传入的参数；执行predicate返回为true，直接return index。<br>6、findKey：根据条件predicate，cb一个callback，循环中调用predicate返回的是true，直接return key。<br>7、filter：cb一个predicate，each传入的obj，将满足predicate的元素push到results数组，循环结束后返回results数组。<br>8、where:调用filter(obj,matcher(attrs))<br>9、findWhere:调用find(obj,matcher(attrs))<br>10、reject<br>11、every：与map类似,循环数组或者对象的Keys时predicate执行为false，return false，否则return true。<br>12、some：与map类似，循环数组或者对象的Keys时predicate执行为true，return true，否则返回false。<br>13、contains<br>14、indexOf<br>15、invoke(obj, method)：_map(obj,fn)，fn中定义func如果method是function，取method,否则取obj中的method; func如果是null，返回func，否则返回func执行结果。<br>16、pluck(obj, key)：return <em>map(obj, </em>.property(key))。<br>17、max<br>18、min<br>19、shuffle：返回一个随机乱序的list副本。<br>20、sample：返回一个list中随机的n个元素。<br>21、sortBy<br>22、groupBy<br>23、indexBy<br>24、countBy<br>25、toArray：参数错误，返回[]；参数是数组，slice返回该数组；类数组,map返回该数组；values返回该数组</p>
+<p>size：返回类数组的长度或者Object的keys的长度</p>
+<p>partition：cb一个predicate方法，each每个元素执行predicate，将满足的存入pass数组，不满足的存入fail数组；合并成一个数组返回</p>
+<p>四、数组中的方法实现：<br>first,last：返回第一个(到第n个)/最后一个(从n个到最后一个) initial, rest</p>
+<p>compact：去除数组中的false(false, null, ‘’, undefined, NaN),使用filter其中的identity</p>
+<p>flatten:</p>
+<p>difference:without</p>
+<p>uniq：<br>object：根据给的key与value列表[key,key],[value,value]或者[[key,value],[key,value]]，创建对象。</p>
+<p>findIndex, findLastIndex：返回某一值的索引</p>
+<p>indexOf, lastIndexOf:返回某一索引的值<br>range(start, stop, step)：创建一个Math.ceil((stop-start)/step)长度的数组。</p>
+<p>五、函数中方法的实现：<br>1、negate(predicate)：返回一个函数，返回predicate执行取反。</p>
+<p>2、partial</p>
+<p>3、bind</p>
+<p>4、bindAll</p>
+<p>5、wrap(func, wrapper)</p>
+<p>6、memoize</p>
+<p>7、delay</p>
+<p>8、defer</p>
+<p>9、throttle</p>
+<p>10、debounce</p>
+<p>11、compose</p>
+<p>12、after</p>
+<p>13、before</p>
+<p>14、once</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/js库/">js库</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/31/inherent/"  data-tooltip="inheritance">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/08/31/inherent/"  data-tooltip="inheritance">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/08/30/underscore/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

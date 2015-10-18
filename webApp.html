@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>webApp - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="define([‘cUtilPath’, ‘cCoreInherit’, ‘cAbstractApp’, ‘cUtilPath’, ‘cAjax’], function(path, cCoreInherit, APP, Path, cAjax){  return cCoreInherit.Class(APP, {    bindEvents: function($super) {      $su">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="webApp">
+<meta property="og:url" content="http://websiteblog.github.io/webApp.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="define([‘cUtilPath’, ‘cCoreInherit’, ‘cAbstractApp’, ‘cUtilPath’, ‘cAjax’], function(path, cCoreInherit, APP, Path, cAjax){  return cCoreInherit.Class(APP, {    bindEvents: function($super) {      $su">
+<meta property="og:updated_time" content="2015-09-20T05:21:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webApp">
+<meta name="twitter:description" content="define([‘cUtilPath’, ‘cCoreInherit’, ‘cAbstractApp’, ‘cUtilPath’, ‘cAjax’], function(path, cCoreInherit, APP, Path, cAjax){  return cCoreInherit.Class(APP, {    bindEvents: function($super) {      $su">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="2">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            webApp
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Mon Sep 07 2015 15:37:19 GMT+0800">
+	
+		    07/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>define([‘cUtilPath’, ‘cCoreInherit’, ‘cAbstractApp’, ‘cUtilPath’, ‘cAjax’], function(path, cCoreInherit, APP, Path, cAjax){<br>  return cCoreInherit.Class(APP, {<br>    bindEvents: function($super) {<br>      $super();<br>      // hashChange事件？？<br>      // App的初始化何时执行的？<br>      // 修改history的方法 ：window.history.pushState(json，””，url)<br>      // window.history.replaceState()—不会新增记录点<br>      $(window).bind(‘popstate’, _.bind(function(e){<br>          var data = e.state || (e.originalEvent &amp;&amp; e.originalEvent.state);<br>          if (data.options)<br>          {<br>            data.options.pushState = false;<br>            data.options.landingpage = 0;<br>            data.options.hideloading = true;<br>            delete data.options.renderAt;<br>          }<br>          if (Lizard.stopStateWatch || !data) {<br>            return;<br>          }<br>          // 写入History<br>          history.replaceState({url: data.url, text: data.text, options: data.options}, document.title, data.url);<br>          // 加载VIEW<br>          this.showView(data);<br>          //<br>          Lizard.<strong>fakeViewNode &amp;&amp; Lizard.</strong>fakeViewNode.remove();<br>      }, this));<br>    },</p>
+<pre><code>start: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)
+</span>{
+  <span class="keyword">var</span> landingpath = path.parseUrl(location.href).pathname;
+  <span class="keyword">if</span> (landingpath == <span class="string">'/'</span>)
+  {
+    landingpath = <span class="string">'/index'</span>
+  }
+  <span class="keyword">else</span>
+  {
+    landingpath = location.href.substring(location.href.indexOf(path.parseUrl(location.href).pathname))
+  }
+  history.replaceState({url: landingpath, text: <span class="built_in">document</span>.documentElement.innerHTML, options: {pushState: <span class="literal">false</span>, renderAt: Lizard.renderAt, landingpage: <span class="number">1</span>, hideloading: Lizard.config.isFirstPageHideLoading}}, <span class="built_in">document</span>.title, landingpath);
+  <span class="keyword">this</span>.loadView(landingpath, <span class="built_in">document</span>.documentElement.innerHTML, {pushState: <span class="literal">false</span>, renderAt: Lizard.renderAt, landingpage: <span class="number">1</span>, hideloading: Lizard.config.isFirstPageHideLoading});
+},
+
+goTo: <span class="function"><span class="keyword">function</span>(<span class="params">url, opt</span>)
+</span>{      
+  <span class="keyword">var</span> self = <span class="keyword">this</span>;
+  <span class="keyword">if</span> (opt &amp;&amp; opt.viewName &amp;&amp; Lizard.viewHtmlMap[opt.viewName])
+  {
+    <span class="keyword">var</span> pushState = <span class="literal">true</span>;
+    <span class="keyword">if</span> (opt.pushState === <span class="literal">false</span>)
+    {
+      pushState = <span class="literal">false</span>
+      history.replaceState({url: url, text: Lizard.viewHtmlMap[opt.viewName], options: {pushState: <span class="literal">false</span>}}, <span class="built_in">document</span>.title, url);
+    }
+    <span class="keyword">else</span>
+    {
+      history.pushState({url: url, text: Lizard.viewHtmlMap[opt.viewName], options: {pushState: <span class="literal">true</span>}}, <span class="built_in">document</span>.title, url);
+    }
+    <span class="keyword">this</span>.loadView(url, Lizard.viewHtmlMap[opt.viewName], {pushState: pushState});
+    <span class="keyword">return</span>;
+  }
+  cAjax.get(url, opt?opt.data:{}, <span class="function"><span class="keyword">function</span>(<span class="params">html</span>)</span>{
+    <span class="keyword">if</span> (opt &amp;&amp; opt.pushState === <span class="literal">false</span>)
+    {
+      pushState = <span class="literal">false</span>
+      history.replaceState({url: url, text: html, options: {pushState: <span class="literal">false</span>}}, <span class="built_in">document</span>.title, url);
+    }
+    <span class="keyword">else</span>
+    {
+      history.pushState({url: url, text: html, options: {pushState: <span class="literal">true</span>}}, <span class="built_in">document</span>.title, url);
+    }
+    self.loadView(url, html, {pushState: <span class="literal">true</span>});        
+  }, _.bind(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">this</span>.showWarning404(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+      Lizard.goTo(url);
+    });
+  }, <span class="keyword">this</span>));      
+},
+
+goBack: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)
+</span>{
+  <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">0</span>)
+  {
+    history.back()
+  }
+  <span class="keyword">else</span>
+  {
+    <span class="keyword">this</span>.goTo.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);
+  }
+},
+
+judgeForward: <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)
+</span>{
+  <span class="keyword">var</span> parseResult = Path.parseUrl(<span class="built_in">window</span>.location.protocol + <span class="string">'//'</span> + <span class="built_in">window</span>.location.host + (url.indexOf(<span class="string">'/'</span>) == <span class="number">0</span>?url: <span class="string">'/'</span> + url)), reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(parseResult.pathname +<span class="string">"$"</span>);    
+  <span class="keyword">return</span> reg.test(<span class="built_in">window</span>.location.pathname);
+}
+</code></pre><p>  })<br>})</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/webApp.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/webApp.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/webApp.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

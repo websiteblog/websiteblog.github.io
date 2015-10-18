@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>Router and History - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="一、pushState是为了实现局部刷新，同时改变浏览器URL，且支持浏览器的回退
+
+-之前做法：会注册hashChange事件，支持浏览器的跳转。-pushState：12345678910111213window.history.pushState(&amp;#123;  title: title,  url: url,  XXX: xxx&amp;#125;, document.title, url)//">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Router and History">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/07/Router/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="一、pushState是为了实现局部刷新，同时改变浏览器URL，且支持浏览器的回退
+
+-之前做法：会注册hashChange事件，支持浏览器的跳转。-pushState：12345678910111213window.history.pushState(&amp;#123;  title: title,  url: url,  XXX: xxx&amp;#125;, document.title, url)//">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Router and History">
+<meta name="twitter:description" content="一、pushState是为了实现局部刷新，同时改变浏览器URL，且支持浏览器的回退
+
+-之前做法：会注册hashChange事件，支持浏览器的跳转。-pushState：12345678910111213window.history.pushState(&amp;#123;  title: title,  url: url,  XXX: xxx&amp;#125;, document.title, url)//">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Router and History
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Mon Sep 07 2015 14:20:27 GMT+0800">
+	
+		    07/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>一、pushState是为了实现局部刷新，同时改变浏览器URL，且支持浏览器的回退</p>
+<blockquote>
+<p>-之前做法：会注册hashChange事件，支持浏览器的跳转。<br>-pushState：<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">window.history.pushState(&#123;</span><br><span class="line">  title: title,</span><br><span class="line">  url: url,</span><br><span class="line">  XXX: xxx</span><br><span class="line">&#125;, document.title, url)</span><br><span class="line">// 或者replaceState，不会新增节点；</span><br><span class="line">// URL改变了，但没有跳转</span><br><span class="line">window.addEventListener(<span class="string">"popstate"</span>, function (e) &#123;</span><br><span class="line">  var <span class="keyword">state</span> = history.<span class="keyword">state</span>;//e.<span class="keyword">state</span></span><br><span class="line">  document.title = <span class="keyword">state</span>.title;</span><br><span class="line">  $('<span class="comment">#city').html(state.title);</span></span><br><span class="line">  var s = '';</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><br>与之对应的是popState事件，该事件会在浏览器前进后退时候触发，他会捕捉当前URL中的data。</p>
+</blockquote>
+<p>但pushState只支持到IE10，对于winphone为IE9的手机，兼容方案：使用iframe</p>
+<p>基本知识普及：</p>
+<blockquote>
+<p>-http:\/\/为协议，后面为host，接下来为path：此部分的变化会触发服务器请求，刷新页面。<br>-hash部分：不会触发服务器请求，所以最初的单页面应用以hashChange为主，监控hashChange。<br>-而pushState实现了改变前面的，也不引发服务器请求，popState变化引起回调。</p>
+</blockquote>
+<p>Backbone做了兼容性检测：支持便使用pushState，不支持便还是使用hashChange。</p>
+<p>二、路由/View的切换</p>
+<blockquote>
+<p>猫点（hash）片段（#page）可以被用来提供这种链接，随着 History API 的到来，猫点已经可以用于处理标准 URLs （/page）Backbone.Router 为客户端路由提供了许多方法，并能连接到指定的动作（actions）和事件（events）,对于不支持 History API 的旧浏览器，路由提供了优雅的回调函数并可以透明的进行 URL 片段的转换。<br>需要调用 Backbone.history.start()，或 Backbone.history.start({pushState: true}) 来确保驱动初始化 URL 的路由。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 创建router，定义URL匹配到触发actions</span><br><span class="line"> * Backbone.Router.extend(&#123;</span><br><span class="line"></span><br><span class="line">  routes: &#123;</span><br><span class="line">    "help":                 "help",    // #help</span><br><span class="line">    "search/:query":        "search",  // #search/kiwis</span><br><span class="line">    "search/:query/p:page": "search"   // #search/kiwis/p7</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  help: function() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  search: function(query, page) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * routes 将带参数的 URLs 映射到路由实例的方法上</span><br><span class="line"> * 如果匹配一个路由，此时会触发一个基于动作名称的 event， 其它对象可以监听这个路由并接收到通知。</span><br><span class="line"> *</span><br><span class="line">routes: &#123;</span><br><span class="line">  "help/:page":         "help",</span><br><span class="line">  "download/*path":     "download",</span><br><span class="line">  "folder/:name":       "openFolder",</span><br><span class="line">  "folder/:name-:mode": "openFolder"</span><br><span class="line">&#125;</span><br><span class="line">router.on("route:help", function(page) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br><span class="line">或者初始化方法直接调用原型方法route，定义路由，后定义的会覆盖前面定义的。</span><br><span class="line">this.route("page/:number", "page", function(number)&#123; ... &#125;);</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Router构造函数</span><br><span class="line"> * 1、定义this.routes，根据参数的routes项</span><br><span class="line"> * 2、绑定</span><br><span class="line"> * 3、初始化</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> Router = Backbone.Router = <span class="function"><span class="keyword">function</span><span class="params">(options)</span> </span>&#123;</span><br><span class="line">  options || (options = &#123;&#125;);</span><br><span class="line">  <span class="keyword">if</span> (options.routes) this.routes = options.routes;</span><br><span class="line">  this._bindRoutes();</span><br><span class="line">  this.initialize.apply(this, arguments);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">_.extend(Router.prototype, Events, &#123;</span><br><span class="line">  initialize: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * [_bindRoutes description]</span><br><span class="line">   * <span class="doctag">@return</span> &#123;[type]&#125; [description]</span><br><span class="line">   */</span></span><br><span class="line">  _bindRoutes: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!this.routes) <span class="keyword">return</span>;</span><br><span class="line">    this.routes = _.result(this, <span class="string">'routes'</span>);</span><br><span class="line">    <span class="keyword">var</span> route, routes = _.keys(this.routes);</span><br><span class="line">    <span class="keyword">while</span> ((route = routes.pop()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">      this.route(route, this.routes[route]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 创建路由匹配，路由器发器。</span><br><span class="line">   * <span class="doctag">@param</span>  &#123;[type]&#125;   route    [page/:number]</span><br><span class="line">   * <span class="doctag">@param</span>  &#123;[type]&#125;   name     [page]</span><br><span class="line">   * <span class="doctag">@param</span>  &#123;Function&#125; callback [fn]</span><br><span class="line">   * <span class="doctag">@return</span> &#123;[type]&#125;            [router对象]</span><br><span class="line">   */</span></span><br><span class="line">  route: <span class="function"><span class="keyword">function</span><span class="params">(route, name, callback)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">if</span> (!_.isRegExp(route)) route = this._routeToRegExp(route);</span><br><span class="line">    <span class="comment">// 两项参数</span></span><br><span class="line">    <span class="keyword">if</span> (_.isFunction(name)) &#123;</span><br><span class="line">      callback = name;</span><br><span class="line">      name = <span class="string">''</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不存在callback参数</span></span><br><span class="line">    <span class="keyword">if</span> (!callback) callback = this[name];</span><br><span class="line">    <span class="keyword">var</span> router = this;</span><br><span class="line">    <span class="comment">// history的route</span></span><br><span class="line">    Backbone.history.route(route, <span class="function"><span class="keyword">function</span><span class="params">(fragment)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> args = router._extractParameters(route, fragment);</span><br><span class="line">      <span class="keyword">if</span> (router.execute(callback, args, name) !== <span class="keyword">false</span>) &#123;</span><br><span class="line">        router.trigger.apply(router, [<span class="string">'route:'</span> + name].concat(args));</span><br><span class="line">        router.trigger(<span class="string">'route'</span>, name, args);</span><br><span class="line">        Backbone.history.trigger(<span class="string">'route'</span>, router, name, args);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> this;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * optionalParam = /\((.*?)\)/g;  获取括号内的内容</span><br><span class="line">   * namedParam    = /(\(\?)?:\w+/g;  (?及后面的所有内容</span><br><span class="line">   * splatParam    = /\*\w+/g;   *及后面的内容</span><br><span class="line">   * escapeRegExp  = /[\-&#123;&#125;\[\]+?.,\\\^$|#\s]/g;</span><br><span class="line">   * [_routeToRegExp description]</span><br><span class="line">   * <span class="doctag">@param</span>  &#123;[type]&#125; route [description]</span><br><span class="line">   * <span class="doctag">@return</span> &#123;[type]&#125;       [description]</span><br><span class="line">   */</span></span><br><span class="line">  _routeToRegExp: <span class="function"><span class="keyword">function</span><span class="params">(route)</span> </span>&#123;</span><br><span class="line">    route = route.replace(escapeRegExp, <span class="string">'\\$&amp;'</span>)</span><br><span class="line">                 .replace(optionalParam, <span class="string">'(?:$1)?'</span>)</span><br><span class="line">                 .replace(namedParam, <span class="function"><span class="keyword">function</span><span class="params">(match, optional)</span> </span>&#123;</span><br><span class="line">                   <span class="keyword">return</span> optional ? match : <span class="string">'([^/?]+)'</span>;</span><br><span class="line">                 &#125;)</span><br><span class="line">                 .replace(splatParam, <span class="string">'([^?]*?)'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RegExp(<span class="string">'^'</span> + route + <span class="string">'(?:\\?([\\s\\S]*))?$'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  _extractParameters: <span class="function"><span class="keyword">function</span><span class="params">(route, fragment)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> params = route.exec(fragment).slice(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> _.map(params, <span class="function"><span class="keyword">function</span><span class="params">(param, i)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// Don't decode the search params.</span></span><br><span class="line">      <span class="keyword">if</span> (i === params.length - <span class="number">1</span>) <span class="keyword">return</span> param || <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">return</span> param ? decodeURIComponent(param) : <span class="keyword">null</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 覆盖它来执行自定义解析或包装路由</span><br><span class="line">   */</span></span><br><span class="line">  execute: <span class="function"><span class="keyword">function</span><span class="params">(callback, args, name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (callback) callback.apply(this, args);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 你想保存为一个URL，  可以调用navigate以更新的URL。 </span><br><span class="line">   * 如果您也想调用路由功能， 设置trigger选项设置为true。 </span><br><span class="line">   * 无需在浏览器的历史记录创建条目来更新URL，  设置 replace选项设置为true。</span><br><span class="line">   * app.navigate("help/troubleshooting", &#123;trigger: true, replace: true&#125;);</span><br><span class="line">   * <span class="doctag">@param</span>  &#123;[type]&#125; fragment [url]</span><br><span class="line">   * <span class="doctag">@param</span>  &#123;[type]&#125; options  [配置]</span><br><span class="line">   */</span></span><br><span class="line">  navigate: <span class="function"><span class="keyword">function</span><span class="params">(fragment, options)</span> </span>&#123;</span><br><span class="line">    Backbone.history.navigate(fragment, options);</span><br><span class="line">    <span class="keyword">return</span> this;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * start方法来开始路由监听</span><br><span class="line"> * History构造函数：处理 hashchange 事件或 pushState，创建了键值对的路由，history会自动创建。</span><br><span class="line"> * 1、定义handlers</span><br><span class="line"> * 2、绑定checkUrl</span><br><span class="line"> * 定义location及history</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> History = Backbone.History = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.handlers = [];</span><br><span class="line">  _.bindAll(<span class="keyword">this</span>, <span class="string">'checkUrl'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Ensure that `History` can be used outside of the browser.</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.location = <span class="built_in">window</span>.location;</span><br><span class="line">    <span class="keyword">this</span>.history = <span class="built_in">window</span>.history;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">_.extend(History.prototype, Events, &#123;</span><br><span class="line">  interval: <span class="number">50</span>,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * [checkUrl description]</span><br><span class="line">   * @param  &#123;[type]&#125; e [description]</span><br><span class="line">   * @return &#123;[type]&#125;   [description]</span><br><span class="line">   */</span></span><br><span class="line">  checkUrl: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> current = <span class="keyword">this</span>.getFragment();</span><br><span class="line">    <span class="comment">// iframe方式</span></span><br><span class="line">    <span class="keyword">if</span> (current === <span class="keyword">this</span>.fragment &amp;&amp; <span class="keyword">this</span>.iframe) &#123;</span><br><span class="line">      current = <span class="keyword">this</span>.getHash(<span class="keyword">this</span>.iframe);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (current === <span class="keyword">this</span>.fragment) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.iframe) <span class="keyword">this</span>.navigate(current);</span><br><span class="line">    <span class="keyword">this</span>.loadUrl();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 根据pushState与hashchange，返回不同的URL</span><br><span class="line">   */</span></span><br><span class="line">  getFragment: <span class="function"><span class="keyword">function</span>(<span class="params">fragment</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fragment == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>._hasPushState || !<span class="keyword">this</span>._wantsHashChange) &#123;</span><br><span class="line">        fragment = <span class="keyword">this</span>.getPath();</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fragment = <span class="keyword">this</span>.getHash();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// routeStripper = /^[#\/]|\s+$/g</span></span><br><span class="line">    <span class="keyword">return</span> fragment.replace(routeStripper, <span class="string">''</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 返回pushState情况下的路径</span><br><span class="line">   */</span></span><br><span class="line">  getPath: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> path = <span class="built_in">decodeURI</span>(<span class="keyword">this</span>.location.pathname + <span class="keyword">this</span>.getSearch());</span><br><span class="line">    <span class="keyword">var</span> root = <span class="keyword">this</span>.root.slice(<span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (!path.indexOf(root)) path = path.slice(root.length);</span><br><span class="line">    <span class="keyword">return</span> path.slice(<span class="number">1</span>);</span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 获取锚点</span><br><span class="line">   */</span></span><br><span class="line">  getHash: <span class="function"><span class="keyword">function</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> match = (<span class="built_in">window</span> || <span class="keyword">this</span>).location.href.match(<span class="regexp">/#(.*)$/</span>);</span><br><span class="line">    <span class="keyword">return</span> match ? match[<span class="number">1</span>] : <span class="string">''</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 删除锚点，获取参数。</span><br><span class="line">   */</span></span><br><span class="line">  getSearch: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> match = <span class="keyword">this</span>.location.href.replace(<span class="regexp">/#.*/</span>, <span class="string">''</span>).match(<span class="regexp">/\?.+/</span>);</span><br><span class="line">    <span class="keyword">return</span> match ? match[<span class="number">0</span>] : <span class="string">''</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  start: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (History.started) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Backbone.history has already been started'</span>);</span><br><span class="line">    History.started = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// 初始化配置</span></span><br><span class="line">    <span class="keyword">this</span>.options          = _.extend(&#123;root: <span class="string">'/'</span>&#125;, <span class="keyword">this</span>.options, options);</span><br><span class="line">    <span class="keyword">this</span>.root             = <span class="keyword">this</span>.options.root;</span><br><span class="line">    <span class="keyword">this</span>._wantsHashChange = <span class="keyword">this</span>.options.hashChange !== <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>._hasHashChange   = <span class="string">'onhashchange'</span> <span class="keyword">in</span> <span class="built_in">window</span>;</span><br><span class="line">    <span class="keyword">this</span>._wantsPushState  = !!<span class="keyword">this</span>.options.pushState;</span><br><span class="line">    <span class="keyword">this</span>._hasPushState    = !!(<span class="keyword">this</span>.options.pushState &amp;&amp; <span class="keyword">this</span>.history &amp;&amp; <span class="keyword">this</span>.history.pushState);</span><br><span class="line">    <span class="keyword">this</span>.fragment         = <span class="keyword">this</span>.getFragment();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义事件监听</span></span><br><span class="line">    <span class="keyword">var</span> addEventListener = <span class="built_in">window</span>.addEventListener || <span class="function"><span class="keyword">function</span> (<span class="params">eventName, listener</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> attachEvent(<span class="string">'on'</span> + eventName, listener);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 确保root以/开始结束，rootStripper = /^\/+|\/+$/g</span></span><br><span class="line">    <span class="keyword">this</span>.root = (<span class="string">'/'</span> + <span class="keyword">this</span>.root + <span class="string">'/'</span>).replace(rootStripper, <span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果不支持hashchange事件，或者用户想用hashchange，但没有设置pushState</span></span><br><span class="line">    <span class="comment">// 用iframe代理处理location</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>._hasHashChange &amp;&amp; <span class="keyword">this</span>._wantsHashChange &amp;&amp; (!<span class="keyword">this</span>._wantsPushState || !<span class="keyword">this</span>._hasPushState)) &#123;</span><br><span class="line">      <span class="keyword">var</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);</span><br><span class="line">      iframe.src = <span class="string">'javascript:0'</span>;</span><br><span class="line">      iframe.style.display = <span class="string">'none'</span>;</span><br><span class="line">      iframe.tabIndex = -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">var</span> body = <span class="built_in">document</span>.body;</span><br><span class="line">      <span class="comment">// 如果document没有准备好，IE9以下用appendChild会报错</span></span><br><span class="line">      <span class="keyword">this</span>.iframe = body.insertBefore(iframe, body.firstChild).contentWindow;</span><br><span class="line">      <span class="comment">// 更新URL</span></span><br><span class="line">      <span class="keyword">this</span>.navigate(<span class="keyword">this</span>.fragment);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1、支持pushState</span></span><br><span class="line">    <span class="comment">// 2、使用hashchange，也支持，且不存在iframe</span></span><br><span class="line">    <span class="comment">// 3、想要用hashChange，隔一时间去检查URL</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._hasPushState) &#123;</span><br><span class="line">      addEventListener(<span class="string">'popstate'</span>, <span class="keyword">this</span>.checkUrl, <span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>._wantsHashChange &amp;&amp; <span class="keyword">this</span>._hasHashChange &amp;&amp; !<span class="keyword">this</span>.iframe) &#123;</span><br><span class="line">      addEventListener(<span class="string">'hashchange'</span>, <span class="keyword">this</span>.checkUrl, <span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>._wantsHashChange) &#123;</span><br><span class="line">      <span class="keyword">this</span>._checkUrlInterval = setInterval(<span class="keyword">this</span>.checkUrl, <span class="keyword">this</span>.interval);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._wantsHashChange &amp;&amp; <span class="keyword">this</span>._wantsPushState) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 设置了使用 `pushState`，便浏览器不支持，重定向到新的URL</span></span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>._hasPushState &amp;&amp; !<span class="keyword">this</span>.atRoot()) &#123;</span><br><span class="line">        <span class="keyword">this</span>.location.replace(<span class="keyword">this</span>.root + <span class="string">'#'</span> + <span class="keyword">this</span>.getPath());</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Or if we've started out with a hash-based route, but we're currently</span></span><br><span class="line">      <span class="comment">// in a browser where it could be `pushState`-based instead...</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>._hasPushState &amp;&amp; <span class="keyword">this</span>.atRoot()) &#123;</span><br><span class="line">        <span class="keyword">this</span>.navigate(<span class="keyword">this</span>.getHash(), &#123;replace: <span class="literal">true</span>&#125;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.options.silent) <span class="keyword">return</span> <span class="keyword">this</span>.loadUrl();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 修正路径，并返回是否在根目录</span><br><span class="line">   */</span></span><br><span class="line">  atRoot: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果路径的最后不是以/结束，要加上</span></span><br><span class="line">    <span class="keyword">var</span> path = <span class="keyword">this</span>.location.pathname.replace(<span class="regexp">/[^\/]$/</span>, <span class="string">'$&amp;/'</span>);</span><br><span class="line">    <span class="keyword">return</span> path === <span class="keyword">this</span>.root &amp;&amp; !<span class="keyword">this</span>.getSearch();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Disable Backbone.history, perhaps temporarily. Not useful in a real app,</span></span><br><span class="line">  <span class="comment">// but possibly useful for unit testing Routers.</span></span><br><span class="line">  stop: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Add a cross-platform `removeEventListener` shim for older browsers.</span></span><br><span class="line">    <span class="keyword">var</span> removeEventListener = <span class="built_in">window</span>.removeEventListener || <span class="function"><span class="keyword">function</span> (<span class="params">eventName, listener</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> detachEvent(<span class="string">'on'</span> + eventName, listener);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Remove window listeners.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._hasPushState) &#123;</span><br><span class="line">      removeEventListener(<span class="string">'popstate'</span>, <span class="keyword">this</span>.checkUrl, <span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>._wantsHashChange &amp;&amp; <span class="keyword">this</span>._hasHashChange &amp;&amp; !<span class="keyword">this</span>.iframe) &#123;</span><br><span class="line">      removeEventListener(<span class="string">'hashchange'</span>, <span class="keyword">this</span>.checkUrl, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Clean up the iframe if necessary.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.iframe) &#123;</span><br><span class="line">      <span class="built_in">document</span>.body.removeChild(<span class="keyword">this</span>.iframe.frameElement);</span><br><span class="line">      <span class="keyword">this</span>.iframe = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some environments will throw when clearing an undefined interval.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._checkUrlInterval) clearInterval(<span class="keyword">this</span>._checkUrlInterval);</span><br><span class="line">    History.started = <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  route: <span class="function"><span class="keyword">function</span>(<span class="params">route, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.handlers.unshift(&#123;route: route, callback: callback&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Attempt to load the current URL fragment. If a route succeeds with a</span></span><br><span class="line">  <span class="comment">// match, returns `true`. If no defined routes matches the fragment,</span></span><br><span class="line">  <span class="comment">// returns `false`.</span></span><br><span class="line">  loadUrl: <span class="function"><span class="keyword">function</span>(<span class="params">fragment</span>) </span>&#123;</span><br><span class="line">    fragment = <span class="keyword">this</span>.fragment = <span class="keyword">this</span>.getFragment(fragment);</span><br><span class="line">    <span class="keyword">return</span> _.any(<span class="keyword">this</span>.handlers, <span class="function"><span class="keyword">function</span>(<span class="params">handler</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (handler.route.test(fragment)) &#123;</span><br><span class="line">        handler.callback(fragment);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * [navigate description]</span><br><span class="line">   * @param  &#123;[type]&#125; fragment [description]</span><br><span class="line">   * @param  &#123;[type]&#125; options  [description]</span><br><span class="line">   * @return &#123;[type]&#125;          [description]</span><br><span class="line">   */</span></span><br><span class="line">  navigate: <span class="function"><span class="keyword">function</span>(<span class="params">fragment, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!History.started) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (!options || options === <span class="literal">true</span>) options = &#123;trigger: !!options&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> url = <span class="keyword">this</span>.root + (fragment = <span class="keyword">this</span>.getFragment(fragment || <span class="string">''</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Strip the hash and decode for matching.</span></span><br><span class="line">    fragment = <span class="built_in">decodeURI</span>(fragment.replace(pathStripper, <span class="string">''</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.fragment === fragment) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">this</span>.fragment = fragment;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Don't include a trailing slash on the root.</span></span><br><span class="line">    <span class="keyword">if</span> (fragment === <span class="string">''</span> &amp;&amp; url !== <span class="string">'/'</span>) url = url.slice(<span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If pushState is available, we use it to set the fragment as a real URL.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._hasPushState) &#123;</span><br><span class="line">      <span class="keyword">this</span>.history[options.replace ? <span class="string">'replaceState'</span> : <span class="string">'pushState'</span>](&#123;&#125;, <span class="built_in">document</span>.title, url);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If hash changes haven't been explicitly disabled, update the hash</span></span><br><span class="line">    <span class="comment">// fragment to store history.</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>._wantsHashChange) &#123;</span><br><span class="line">      <span class="keyword">this</span>._updateHash(<span class="keyword">this</span>.location, fragment, options.replace);</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.iframe &amp;&amp; (fragment !== <span class="keyword">this</span>.getHash(<span class="keyword">this</span>.iframe))) &#123;</span><br><span class="line">        <span class="comment">// Opening and closing the iframe tricks IE7 and earlier to push a</span></span><br><span class="line">        <span class="comment">// history entry on hash-tag change.  When replace is true, we don't</span></span><br><span class="line">        <span class="comment">// want this.</span></span><br><span class="line">        <span class="keyword">if</span>(!options.replace) <span class="keyword">this</span>.iframe.document.open().close();</span><br><span class="line">        <span class="keyword">this</span>._updateHash(<span class="keyword">this</span>.iframe.location, fragment, options.replace);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If you've told us that you explicitly don't want fallback hashchange-</span></span><br><span class="line">    <span class="comment">// based history, then `navigate` becomes a page refresh.</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.location.assign(url);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (options.trigger) <span class="keyword">return</span> <span class="keyword">this</span>.loadUrl(fragment);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Update the hash location, either replacing the current entry, or adding</span></span><br><span class="line">  <span class="comment">// a new one to the browser history.</span></span><br><span class="line">  _updateHash: <span class="function"><span class="keyword">function</span>(<span class="params">location, fragment, replace</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (replace) &#123;</span><br><span class="line">      <span class="keyword">var</span> href = location.href.replace(<span class="regexp">/(javascript:|#).*$/</span>, <span class="string">''</span>);</span><br><span class="line">      location.replace(href + <span class="string">'#'</span> + fragment);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Some browsers require that `hash` contains a leading #.</span></span><br><span class="line">      location.hash = <span class="string">'#'</span> + fragment;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/MVC/">MVC</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/07/publishAndSub/"  data-tooltip="javascript发布与订阅">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/07/webSecurity/" data-tooltip="webSecurity">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/07/publishAndSub/"  data-tooltip="javascript发布与订阅">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/07/webSecurity/" data-tooltip="webSecurity">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/07/Router/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>

@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="websit blog">
+    <title>js动画与css动画 - websit blog</title>
+    <meta name="author" content="mengyue">
+    
+    
+    <meta name="description" content="CSS动画：1、缺少独立的控制，如果把scale/rotation/position都塞进transform属性当中，不能够真正独立控制它们。如何用不同的时间和缓分别控制元素的rotation与scale，可能这个元素会不停的震荡，当然可以用不同的层来控制。
+较新的 GSAP 同样是基于 JavaScript 的，但是毫不夸张的说它的性能相比于 jQuery 提升了近 20 倍。
+CSS 动画“硬">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="js动画与css动画">
+<meta property="og:url" content="http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/index.html">
+<meta property="og:site_name" content="websit blog">
+<meta property="og:description" content="CSS动画：1、缺少独立的控制，如果把scale/rotation/position都塞进transform属性当中，不能够真正独立控制它们。如何用不同的时间和缓分别控制元素的rotation与scale，可能这个元素会不停的震荡，当然可以用不同的层来控制。
+较新的 GSAP 同样是基于 JavaScript 的，但是毫不夸张的说它的性能相比于 jQuery 提升了近 20 倍。
+CSS 动画“硬">
+<meta property="og:updated_time" content="2015-09-20T05:21:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js动画与css动画">
+<meta name="twitter:description" content="CSS动画：1、缺少独立的控制，如果把scale/rotation/position都塞进transform属性当中，不能够真正独立控制它们。如何用不同的时间和缓分别控制元素的rotation与scale，可能这个元素会不停的震荡，当然可以用不同的层来控制。
+较新的 GSAP 同样是基于 JavaScript 的，但是毫不夸张的说它的性能相比于 jQuery 提升了近 20 倍。
+CSS 动画“硬">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">websit blog</a>
+    </h1>
+    
+</header>
+            <nav id="sidebar" data-behavior="4">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Pesquisar</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Sobre</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            js动画与css动画
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Tue Sep 08 2015 14:51:26 GMT+0800">
+	
+		    08/09/2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>CSS动画：<br>1、缺少独立的控制，如果把scale/rotation/position都塞进transform属性当中，不能够真正独立控制它们。如何用不同的时间和缓分别控制元素的rotation与scale，可能这个元素会不停的震荡，当然可以用不同的层来控制。</p>
+<p>较新的 GSAP 同样是基于 JavaScript 的，但是毫不夸张的说它的性能相比于 jQuery 提升了近 20 倍。</p>
+<p>CSS 动画“硬件加速”的原因：<br>1、GPU 的使用</p>
+<blockquote>
+<p>-GPU 在执行类似控制像素点的移动和应用变换矩阵和透明等方面都做了优化，因此现代浏览器会试着把这方面的任务从 CPU 转交给 GPU 来完成。<br>-秘诀在于将应用动画的元素独立出来，建立一个自己的 GPU 层，因为只要一个层被创建，让 GPU 去移动那些像素点并把它们组合起来是很轻松的一件事。<br>-不同于以每秒 60 次的速度计算每个像素点的位置，GPU 可以把大量的像素以层的方式储存，通过块像素操作来操作像素。<br><strong>注：</strong>GPU 是有图像存储空间限制的，因此将每个元素都转换为一个层是不合适的。一旦 GPU 的存储空间用完了，速度就会急剧降低。<br>通过 CSS 声明动画能够让浏览器决定哪个元素应该获得 GPU 层，并根据实际情况分配资源。</p>
+</blockquote>
+<p>所以javascript动画也可以用一个 3D 特性的触发器（比如translate3d()或者matrix3d()）来让浏览器为这个元素开辟一个 GPU 层。</p>
+<p>GPU 的加速，大多数是不能的，变换（比如 scale，rotation， translation 和 skew）和透明效果是直接受益的。</p>
+<p>2、将计算转移给不同的线程<br>“硬件加速”的另一个方面是使用 CPU 的不同线程来进行和动画相关的计算。</p>
+<blockquote>
+<p>-只有与文档流无关的属性才能真正被移交给另一个线程，所以变换和透明度是首要受益者。<br>-转移线程的过程中也是有开销的，大多数动画中，图像的渲染和文档的展现已经耗费了大多数的处理器资源（这还没有算上中间动画属性本身所耗费的资源）。<br>-因此转移线程所带来的好处已经微乎其微了。比如，在一个动画中，98%的资源都用来计算图像的渲染和文档流的展现，只有2%的资源用来计算位置、旋转、透明度等属性，即使你将这部分的计算速度加快了十倍，整体带来的速度提升可能也只有1%而已。</p>
+</blockquote>
+<p>GSAP</p>
+<p>3、工作流<br>一些浏览器允许你在 CSS keyframes 动画中暂停，但最多也就是这样了。<br>不能在动画中寻找一个特定的时间点，不可能在半路反转动画，不可能变换时间尺度，不可能在特定的位置添加回调函数或是将他们绑定在一大堆回放事件上。</p>
+<p>1、创建动画的过程中常常需要进行很多的试验，尤其是针对时间和缓动方式，seek()方法：</p>
+<blockquote>
+<p>-想象你创建了一个 60 秒长度的动画然后需要对最后 5 秒进行处理，为了看到编辑后的效果，你每次都要先等上 55 秒钟的时间才行。你可以使用这个方法直接跳过前面的时间，最后再移除这个方法，这样可以节省大量的时间。<br>-创建基于 canvas 的对象以及第三方库对象的动画的场景越来越多，而 CSS 动画又只能以 DOM 元素为目标。</p>
+</blockquote>
+<p>4、不适合使用css动画的情况</p>
+<blockquote>
+<p>-相对值：“再旋转 30 度”<br>-嵌套：想象把一个动画嵌套在另一个同样可以被嵌套的动画之中，等等。设想控制主动画的时候所有的动画都能同步。这样的结构能促进生成模块化的代码，利于生产和维护。<br>-进程报告：特定的动画结束了吗？如果没有，它现在处于整个过程中的什么位置。<br>-特定删除：移除一个元素的动画，其他动画能正常进行。<br>-代码简洁：CSS keyframes 即使不添加多余带前缀的属性，动画的代码也会非常冗长。</p>
+</blockquote>
+<p>5、有限的动画效果(有待验证)</p>
+<blockquote>
+<p>-沿着曲线运动（比如贝塞尔曲线）<br>-使用有趣的缓动效果，比如有弹性的，或是弹跳，或是粗糙的效果。虽然有cubic-bezier()这个选项，但它只允许两个控制点，因此功能也十分有限。<br>-在 CSS keyframes 动画中针对不同的属性使用不同的缓动效果。缓动会应用到整个 CSS keyframes 上。<br>-基于物理的动作。例如，有冲击效果的闪烁，或是恢复状态，就像这个Demo中的一样。<br>-滚动位置的动画。<br>-指定方向的旋转。比如沿最短方向旋转270度，或顺时针和逆时针。<br>-元素属性的动画</p>
+</blockquote>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/09/cssInspection/"  data-tooltip="检测css属性支持">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/javascriptDebugger/" data-tooltip="javascriptDebugger">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 mengyue. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/09/cssInspection/"  data-tooltip="检测css属性支持">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/08/javascriptDebugger/" data-tooltip="javascriptDebugger">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://websiteblog.github.io/2015/09/08/jsAnimationAndCSSAnimation/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">mengyue</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://res.cloudinary.com/tranquilpeak-hexo-theme/image/upload/v1438975482/v1.3.0-cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>
